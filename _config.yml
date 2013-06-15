@@ -10,7 +10,7 @@ pygments: true
 # so be sure to set them if your theme uses them.
 #
 title : Katie Leonard - Portfolio
-tagline: Portfolio
+tagline:
 author :
   name : Katie Leonard
   email : keighty.leonard@gmail.com
