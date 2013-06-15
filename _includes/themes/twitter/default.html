@@ -48,11 +48,24 @@
 
     <div class="container-narrow">
 
-      <div class="content">
+      <div class="content span5">
         {{ content }}
       </div>
       <hr>
-      <footer>
+
+      <div class="span1 pull-right">
+        <h3>Links</h3>
+        <p>
+          <a href="https://dl.dropboxusercontent.com/u/62287598/KLeonard_CV.html" target="blank">Resume</a>
+          <a href="https://twitter.com/KeightyLeonard" target="blank">GitHub</a>
+          <a href="https://twitter.com/KeightyLeonard" target="blank">Twitter</a>
+          <a href="http://ca.linkedin.com/in/katieleonard" target="blank">LinkedIn</a>
+          <a href="mailto:keighty.leonard@gmail.com" target="blank">Email</a>
+        </p>
+      </div>
+
+      <hr>
+      <footer class="span12">
         <p>&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}
           with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
           and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
@@ -61,6 +74,6 @@
 
     </div>
 
-    {% include JB/analytics %}
+    <!-- {% include JB/analytics %} -->
   </body>
 </html>
