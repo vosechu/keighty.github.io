@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
  
  <title>Katie Leonard - Portfolio</title>
- <link href="http://keighty.github.io/" rel="self"/>
- <link href="http://keighty.github.io"/>
- <updated>2013-06-15T14:49:23-07:00</updated>
- <id>http://keighty.github.io</id>
+ <link href="http://katieleonard.ca/" rel="self"/>
+ <link href="http://katieleonard.ca"/>
+ <updated>2013-06-19T18:01:53-07:00</updated>
+ <id>http://katieleonard.ca</id>
  <author>
    <name>Katie Leonard</name>
    <email>keighty.leonard@gmail.com</email>
@@ -13,10 +13,27 @@
 
  
  <entry>
+   <title>Namespaces and jQuery</title>
+   <link href="http://katieleonard.ca/jquery/2013/06/18/solving-namespace-conflicts-with-jquery"/>
+   <updated>2013-06-18T00:00:00-07:00</updated>
+   <id>http://katieleonard.ca/jquery/2013/06/18/solving-namespace-conflicts-with-jquery</id>
+   <content type="html">&lt;h3 id=&#39;namespaces_in_jquery_getting_you_down&#39;&gt;Namespaces in jQuery getting you down?&lt;/h3&gt;
+
+&lt;p&gt;Chuck taught me a great trick today &amp;#8211; how to avoid namespace conflicts in jQuery:&lt;/p&gt;
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;javascript&#39;&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;kd&#39;&gt;function&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;$&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;){&lt;/span&gt;
+&lt;span class=&#39;p&#39;&gt;...&lt;/span&gt;
+&lt;span class=&#39;p&#39;&gt;})(&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;jQuery&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This function is being passed jQuery as an argument, and is assigning it the local variable $ &amp;#8211; allowing you to use the $ and reference the jQuery library.&lt;/p&gt;
+
+&lt;p&gt;Awesome.&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
    <title>Blogging with Jekyll Bootstrap</title>
-   <link href="http://keighty.github.io/2013/06/15/blogging-with-jekyll-bootstrap"/>
+   <link href="http://katieleonard.ca/2013/06/15/blogging-with-jekyll-bootstrap"/>
    <updated>2013-06-15T00:00:00-07:00</updated>
-   <id>http://keighty.github.io/2013/06/15/blogging-with-jekyll-bootstrap</id>
+   <id>http://katieleonard.ca/2013/06/15/blogging-with-jekyll-bootstrap</id>
    <content type="html">&lt;p&gt;Building a portfolio has been a lot of fun and has required a couple of different technologies. A fellow PCS student has been blogging a long time, and he suggested using Jekyll in combination with github pages. What a fantastic gem! I found an even more awesome one at &lt;a href=&#39;http://jekyllbootstrap.com/&#39;&gt;jekyll-bootstrap&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Now I am enjoying the power of bootstrap along with the ease of jekyll.&lt;/p&gt;
@@ -32,17 +49,17 @@
  
  <entry>
    <title>test post with bootstrap</title>
-   <link href="http://keighty.github.io/2013/06/14/test-post-with-bootstrap"/>
+   <link href="http://katieleonard.ca/2013/06/14/test-post-with-bootstrap"/>
    <updated>2013-06-14T00:00:00-07:00</updated>
-   <id>http://keighty.github.io/2013/06/14/test-post-with-bootstrap</id>
+   <id>http://katieleonard.ca/2013/06/14/test-post-with-bootstrap</id>
    <content type="html"></content>
  </entry>
  
  <entry>
    <title>I admit it, I love TDD</title>
-   <link href="http://keighty.github.io/tdd/testing/2013/06/14/TDD-is-the-way-to-be"/>
+   <link href="http://katieleonard.ca/tdd/testing/2013/06/14/TDD-is-the-way-to-be"/>
    <updated>2013-06-14T00:00:00-07:00</updated>
-   <id>http://keighty.github.io/tdd/testing/2013/06/14/TDD-is-the-way-to-be</id>
+   <id>http://katieleonard.ca/tdd/testing/2013/06/14/TDD-is-the-way-to-be</id>
    <content type="html">&lt;p&gt;This week @PDXcodeschool we jumped into TDD using minitest/autorun. I have used RSpec in the past, and loved the way it let me manage the logic of my project. I love that ruby has a built in framework &amp;#8211; so easy to use!&lt;/p&gt;
 
 &lt;ul&gt;

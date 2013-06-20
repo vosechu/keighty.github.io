@@ -3,12 +3,29 @@
 <channel>
         <title>Katie Leonard - Portfolio</title>
         <description>Katie Leonard - Portfolio - Katie Leonard</description>
-        <link>http://keighty.github.io</link>
-        <link>http://keighty.github.io</link>
-        <lastBuildDate>2013-06-15T14:49:23-07:00</lastBuildDate>
-        <pubDate>2013-06-15T14:49:23-07:00</pubDate>
+        <link>http://katieleonard.ca</link>
+        <link>http://katieleonard.ca</link>
+        <lastBuildDate>2013-06-19T18:01:53-07:00</lastBuildDate>
+        <pubDate>2013-06-19T18:01:53-07:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>Namespaces and jQuery</title>
+                <description>&lt;h3 id=&#39;namespaces_in_jquery_getting_you_down&#39;&gt;Namespaces in jQuery getting you down?&lt;/h3&gt;
+
+&lt;p&gt;Chuck taught me a great trick today &amp;#8211; how to avoid namespace conflicts in jQuery:&lt;/p&gt;
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;javascript&#39;&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;kd&#39;&gt;function&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;$&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;){&lt;/span&gt;
+&lt;span class=&#39;p&#39;&gt;...&lt;/span&gt;
+&lt;span class=&#39;p&#39;&gt;})(&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;jQuery&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This function is being passed jQuery as an argument, and is assigning it the local variable $ &amp;#8211; allowing you to use the $ and reference the jQuery library.&lt;/p&gt;
+
+&lt;p&gt;Awesome.&lt;/p&gt;</description>
+                <link>http://katieleonard.ca/jquery/2013/06/18/solving-namespace-conflicts-with-jquery</link>
+                <guid>http://katieleonard.ca/jquery/2013/06/18/solving-namespace-conflicts-with-jquery</guid>
+                <pubDate>2013-06-18T00:00:00-07:00</pubDate>
+        </item>
 
         <item>
                 <title>Blogging with Jekyll Bootstrap</title>
@@ -23,16 +40,16 @@
 &lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;ruby&#39;&gt;&lt;span class=&#39;err&#39;&gt;$&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;rake&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;page&lt;/span&gt; &lt;span class=&#39;nb&#39;&gt;name&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;=&lt;/span&gt;&lt;span class=&#39;s2&#39;&gt;&amp;quot;pages/about&amp;quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Couldn&amp;#8217;t be simpler for a beginning blogger.&lt;/p&gt;</description>
-                <link>http://keighty.github.io/2013/06/15/blogging-with-jekyll-bootstrap</link>
-                <guid>http://keighty.github.io/2013/06/15/blogging-with-jekyll-bootstrap</guid>
+                <link>http://katieleonard.ca/2013/06/15/blogging-with-jekyll-bootstrap</link>
+                <guid>http://katieleonard.ca/2013/06/15/blogging-with-jekyll-bootstrap</guid>
                 <pubDate>2013-06-15T00:00:00-07:00</pubDate>
         </item>
 
         <item>
                 <title>test post with bootstrap</title>
                 <description></description>
-                <link>http://keighty.github.io/2013/06/14/test-post-with-bootstrap</link>
-                <guid>http://keighty.github.io/2013/06/14/test-post-with-bootstrap</guid>
+                <link>http://katieleonard.ca/2013/06/14/test-post-with-bootstrap</link>
+                <guid>http://katieleonard.ca/2013/06/14/test-post-with-bootstrap</guid>
                 <pubDate>2013-06-14T00:00:00-07:00</pubDate>
         </item>
 
@@ -66,8 +83,8 @@
 &lt;span class=&#39;k&#39;&gt;end&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;If your tests exercise the project well enough, you end up with really tight code. More of a lasagna noodle than spaghetti!&lt;/p&gt;</description>
-                <link>http://keighty.github.io/tdd/testing/2013/06/14/TDD-is-the-way-to-be</link>
-                <guid>http://keighty.github.io/tdd/testing/2013/06/14/TDD-is-the-way-to-be</guid>
+                <link>http://katieleonard.ca/tdd/testing/2013/06/14/TDD-is-the-way-to-be</link>
+                <guid>http://katieleonard.ca/tdd/testing/2013/06/14/TDD-is-the-way-to-be</guid>
                 <pubDate>2013-06-14T00:00:00-07:00</pubDate>
         </item>
 
