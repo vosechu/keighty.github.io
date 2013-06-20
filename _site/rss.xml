@@ -5,10 +5,46 @@
         <description>Katie Leonard - Portfolio - Katie Leonard</description>
         <link>http://katieleonard.ca</link>
         <link>http://katieleonard.ca</link>
-        <lastBuildDate>2013-06-19T18:01:53-07:00</lastBuildDate>
-        <pubDate>2013-06-19T18:01:53-07:00</pubDate>
+        <lastBuildDate>2013-06-19T18:22:40-07:00</lastBuildDate>
+        <pubDate>2013-06-19T18:22:40-07:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>jQuery objects vs strings</title>
+                <description>&lt;h2 id=&#39;object_blocker&#39;&gt;Object blocker!!&lt;/h2&gt;
+
+&lt;p&gt;My pair was stuck for the longest time on the following code snip:&lt;/p&gt;
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;javascript&#39;&gt;&lt;span class=&#39;nx&#39;&gt;$&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;kd&#39;&gt;function&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(){&lt;/span&gt;
+  &lt;span class=&#39;kd&#39;&gt;var&lt;/span&gt; &lt;span class=&#39;nx&#39;&gt;new_square&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;s1&#39;&gt;&amp;#39;$(&amp;lt;div class=&amp;quot;square&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;)&amp;#39;&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;;&lt;/span&gt;
+
+  &lt;span class=&#39;nx&#39;&gt;$&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;s1&#39;&gt;&amp;#39;body&amp;#39;&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;).&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;on&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;s1&#39;&gt;&amp;#39;click&amp;#39;&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt;&lt;span class=&#39;s1&#39;&gt;&amp;#39;.square&amp;#39;&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;kd&#39;&gt;function&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(){&lt;/span&gt;
+    &lt;span class=&#39;c1&#39;&gt;// var my_square = $(this);&lt;/span&gt;
+    &lt;span class=&#39;nx&#39;&gt;$&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;k&#39;&gt;this&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;).&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;toggleClass&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;s1&#39;&gt;&amp;#39;blue&amp;#39;&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;);&lt;/span&gt;
+
+    &lt;span class=&#39;nx&#39;&gt;b&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;nx&#39;&gt;$&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;new_square&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;)&lt;/span&gt;
+      &lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;insertAfter&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;k&#39;&gt;this&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;);&lt;/span&gt;
+    &lt;span class=&#39;nx&#39;&gt;a&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;nx&#39;&gt;$&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;new_square&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;)&lt;/span&gt;
+      &lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;insertBefore&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;k&#39;&gt;this&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;);&lt;/span&gt;
+    &lt;span class=&#39;nx&#39;&gt;b&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;toggleClass&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;s1&#39;&gt;&amp;#39;blue&amp;#39;&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;);&lt;/span&gt;
+    &lt;span class=&#39;nx&#39;&gt;a&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;toggleClass&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;s1&#39;&gt;&amp;#39;blue&amp;#39;&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;);&lt;/span&gt;
+  &lt;span class=&#39;p&#39;&gt;});&lt;/span&gt;
+&lt;span class=&#39;p&#39;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We expected out output to include three elements &amp;#8211; the original square, one inserted after, and one inserted before. The output we were seeing included only two squares: the original one and the square inserted before. If we inverted the insert calls, we would see only one inserted after. We were totally stumped until we printed out the content of new_square:&lt;/p&gt;
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;javascript&#39;&gt; &lt;span class=&#39;nx&#39;&gt;$&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;div&lt;/span&gt; &lt;span class=&#39;kr&#39;&gt;class&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;=&lt;/span&gt;&lt;span class=&#39;s2&#39;&gt;&amp;quot;square&amp;quot;&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&#39;err&#39;&gt;/div&amp;gt;) &lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We were actually passing a reference to a jQuery OBJECT into the insert methods, so in essence, we were creating the object once and then passing it around to different locations. When we changed new_square from a jQuery object:&lt;/p&gt;
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;javascript&#39;&gt; &lt;span class=&#39;kd&#39;&gt;var&lt;/span&gt; &lt;span class=&#39;nx&#39;&gt;new_square&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;s1&#39;&gt;&amp;#39;$(&amp;lt;div class=&amp;quot;square&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;)&amp;#39;&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;;&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;to a string&lt;/p&gt;
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;javascript&#39;&gt; &lt;span class=&#39;kd&#39;&gt;var&lt;/span&gt; &lt;span class=&#39;nx&#39;&gt;new_square&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;s1&#39;&gt;&amp;#39;&amp;lt;div class=&amp;quot;square&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;;&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We saw our third element appear no problem.&lt;/p&gt;</description>
+                <link>http://katieleonard.ca/jquery/2013/06/19/jquery-objects-vs-strings</link>
+                <guid>http://katieleonard.ca/jquery/2013/06/19/jquery-objects-vs-strings</guid>
+                <pubDate>2013-06-19T00:00:00-07:00</pubDate>
+        </item>
 
         <item>
                 <title>Namespaces and jQuery</title>
@@ -43,14 +79,6 @@
                 <link>http://katieleonard.ca/2013/06/15/blogging-with-jekyll-bootstrap</link>
                 <guid>http://katieleonard.ca/2013/06/15/blogging-with-jekyll-bootstrap</guid>
                 <pubDate>2013-06-15T00:00:00-07:00</pubDate>
-        </item>
-
-        <item>
-                <title>test post with bootstrap</title>
-                <description></description>
-                <link>http://katieleonard.ca/2013/06/14/test-post-with-bootstrap</link>
-                <guid>http://katieleonard.ca/2013/06/14/test-post-with-bootstrap</guid>
-                <pubDate>2013-06-14T00:00:00-07:00</pubDate>
         </item>
 
         <item>

@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>jQuery objects vs strings</title>
+    <meta name="description" content="">
+    <meta name="author" content="Katie Leonard">
+
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">Katie Leonard - Portfolio</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Blog</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/projects.html">Projects</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content span5">
+        
+<div class="page-header">
+  <h1>jQuery objects vs strings </h1>
+</div>
+
+<div class="row-fluid post-full">
+  <div class="span12">
+    <div class="date">
+      <span>19 June 2013</span>
+    </div>
+    <div class="content">
+      <h2 id='object_blocker'>Object blocker!!</h2>
+
+<p>My pair was stuck for the longest time on the following code snip:</p>
+<div class='highlight'><pre><code class='javascript'><span class='nx'>$</span><span class='p'>(</span><span class='kd'>function</span><span class='p'>(){</span>
+  <span class='kd'>var</span> <span class='nx'>new_square</span> <span class='o'>=</span> <span class='s1'>&#39;$(&lt;div class=&quot;square&quot;&gt;&lt;/div&gt;)&#39;</span><span class='p'>;</span>
+
+  <span class='nx'>$</span><span class='p'>(</span><span class='s1'>&#39;body&#39;</span><span class='p'>).</span><span class='nx'>on</span><span class='p'>(</span><span class='s1'>&#39;click&#39;</span><span class='p'>,</span><span class='s1'>&#39;.square&#39;</span><span class='p'>,</span> <span class='kd'>function</span><span class='p'>(){</span>
+    <span class='c1'>// var my_square = $(this);</span>
+    <span class='nx'>$</span><span class='p'>(</span><span class='k'>this</span><span class='p'>).</span><span class='nx'>toggleClass</span><span class='p'>(</span><span class='s1'>&#39;blue&#39;</span><span class='p'>);</span>
+
+    <span class='nx'>b</span> <span class='o'>=</span> <span class='nx'>$</span><span class='p'>(</span><span class='nx'>new_square</span><span class='p'>)</span>
+      <span class='p'>.</span><span class='nx'>insertAfter</span><span class='p'>(</span><span class='k'>this</span><span class='p'>);</span>
+    <span class='nx'>a</span> <span class='o'>=</span> <span class='nx'>$</span><span class='p'>(</span><span class='nx'>new_square</span><span class='p'>)</span>
+      <span class='p'>.</span><span class='nx'>insertBefore</span><span class='p'>(</span><span class='k'>this</span><span class='p'>);</span>
+    <span class='nx'>b</span><span class='p'>.</span><span class='nx'>toggleClass</span><span class='p'>(</span><span class='s1'>&#39;blue&#39;</span><span class='p'>);</span>
+    <span class='nx'>a</span><span class='p'>.</span><span class='nx'>toggleClass</span><span class='p'>(</span><span class='s1'>&#39;blue&#39;</span><span class='p'>);</span>
+  <span class='p'>});</span>
+<span class='p'>});</span>
+</code></pre></div>
+<p>We expected out output to include three elements &#8211; the original square, one inserted after, and one inserted before. The output we were seeing included only two squares: the original one and the square inserted before. If we inverted the insert calls, we would see only one inserted after. We were totally stumped until we printed out the content of new_square:</p>
+<div class='highlight'><pre><code class='javascript'> <span class='nx'>$</span><span class='p'>(</span><span class='o'>&lt;</span><span class='nx'>div</span> <span class='kr'>class</span><span class='o'>=</span><span class='s2'>&quot;square&quot;</span><span class='o'>&gt;&lt;</span><span class='err'>/div&gt;) </span>
+</code></pre></div>
+<p>We were actually passing a reference to a jQuery OBJECT into the insert methods, so in essence, we were creating the object once and then passing it around to different locations. When we changed new_square from a jQuery object:</p>
+<div class='highlight'><pre><code class='javascript'> <span class='kd'>var</span> <span class='nx'>new_square</span> <span class='o'>=</span> <span class='s1'>&#39;$(&lt;div class=&quot;square&quot;&gt;&lt;/div&gt;)&#39;</span><span class='p'>;</span> 
+</code></pre></div>
+<p>to a string</p>
+<div class='highlight'><pre><code class='javascript'> <span class='kd'>var</span> <span class='nx'>new_square</span> <span class='o'>=</span> <span class='s1'>&#39;&lt;div class=&quot;square&quot;&gt;&lt;/div&gt;&#39;</span><span class='p'>;</span> 
+</code></pre></div>
+<p>We saw our third element appear no problem.</p>
+    </div>
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-folder-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories.html#jquery-ref">
+    		jquery <span>2</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+  
+
+  
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/jquery/2013/06/18/solving-namespace-conflicts-with-jquery" title="Namespaces and jQuery">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next disabled"><a>Next &rarr;</a>
+      
+      </ul>
+    </div>
+    <hr>
+    <!--  -->
+  </div>
+</div>
+
+
+      </div>
+      <hr>
+
+      <div class="span1 pull-right">
+        <h3>Links</h3>
+        <p>
+          <a href="https://dl.dropboxusercontent.com/u/62287598/KLeonard_CV.html" target="blank">Resume</a>
+          <a href="https://github.com/keighty" target="blank">GitHub</a>
+          <a href="https://twitter.com/KeightyLeonard" target="blank">Twitter</a>
+          <a href="http://ca.linkedin.com/in/katieleonard" target="blank">LinkedIn</a>
+        </p>
+      </div>
+
+      <hr>
+      <footer class="span12">
+        <p>&copy; 2013 Katie Leonard
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+        <p>
+          Email: <a href="mailto:keighty.leonard@gmail.com">keighty.leonard@gmail.com</a>
+        </p>
+      </footer>
+
+    </div>
+
+    <!--  -->
+  </body>
+</html>
+
