@@ -62,19 +62,31 @@ Database optimization for storage of cell-line library
 ####Certificate - Software Development
 Sept 2009 — Dec 2011 McGill University
 
-Graduated on the Dean's List. Courses include Java Programming, Database Design and Administration, Operating Systems Administration, Data Structures and Algorithms, Web Development, Network Administration, Systems Analysis, System Implementation, and Project Management.
+Graduated on the Dean's List.
+
+Courses include Java Programming, Database Design and Administration, Operating Systems Administration, Data Structures and Algorithms, Web Development, Network Administration, Systems Analysis, System Implementation, and Project Management.
 
 ####Bachelor of Science - Biology
-Jan 1998 — June 2002 Simon Fraser University
+Jan 1998 — June 2002
+
+Simon Fraser University
+
 Science degree in biology, specializing in animal physiology. Minor in English.
 
 ####Certificate - Liberal Arts
-Jan 2000 — June 2002 Simon Fraser University
+Jan 2000 — June 2002
+
+Simon Fraser University
+
 Requirements include a variety of courses from many disciplines including philosophy, languages, sciences, Canadian studies, criminology, and sociology.
 
 ###Hobbies
 American Contract Bridge League ~ Life Master
+
 Visual Arts Center ~ Life Drawing Student
+
 Royal Montreal Curling Club ~ Board Member (Director of Communications)
+
 Klaxson Tap Dance Troop ~ Student
+
 Cadance Dance School ~ Student
