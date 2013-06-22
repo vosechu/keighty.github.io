@@ -22,9 +22,19 @@
 				<nav class="nav-global">
 					<ul>
 						<li class="logo"><a href="/">{{ site.title }}</a></li>
-						{% assign pages_list = site.pages %}
+						<!-- {% assign pages_list = site.pages %}
             {% assign group = 'navigation' %}
-            {% include JB/pages_list %}
+            {% include JB/pages_list %} -->
+            <li><h3>Hello!</h3>
+            <li><a href="/">Welcome</a></li>
+		        <li><a href="/blog/index.html">Blog</a></li>
+		        <li><a href="/resume/index.html">Resume</a></li>
+		        <hr>
+		        <li><h3>Projects</h3>
+		        	<ul>
+		        		<li><a href="/projects/index.html">Android Apps</a></li>
+		        	</ul>
+		        </li>
 					</ul>
 				</nav>
 			</div><!-- unit-inner -->

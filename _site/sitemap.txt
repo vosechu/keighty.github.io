@@ -1,5 +1,6 @@
 
 http://katieleonard.ca/atom.xml
+http://katieleonard.ca/blog/index.html
 http://katieleonard.ca/categories.html
 http://katieleonard.ca/index.html
 http://katieleonard.ca/pages.html
