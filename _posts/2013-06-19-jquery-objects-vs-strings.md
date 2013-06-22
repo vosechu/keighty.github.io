@@ -34,7 +34,7 @@ $(function(){
  we inverted the insert calls, we would see only one inserted after. We
  were totally stumped until we printed out the content of new_square:
  {% highlight javascript %}
- $(<div class="square"></div>) {% endhighlight %}
+ $('<div class="square"></div>');{% endhighlight %}
  We were actually passing a reference to a jQuery OBJECT into the insert methods,
  so in essence, we were creating the object once and then passing it around to
  different locations. When we changed new_square from a jQuery object:

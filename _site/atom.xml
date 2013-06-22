@@ -4,7 +4,7 @@
  <title>Katie Leonard - Portfolio</title>
  <link href="http://katieleonard.ca/" rel="self"/>
  <link href="http://katieleonard.ca"/>
- <updated>2013-06-22T09:17:59-07:00</updated>
+ <updated>2013-06-22T11:54:10-07:00</updated>
  <id>http://katieleonard.ca</id>
  <author>
    <name>Katie Leonard</name>
@@ -37,7 +37,7 @@
 &lt;span class=&#39;p&#39;&gt;});&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;We expected out output to include three elements &amp;#8211; the original square, one inserted after, and one inserted before. The output we were seeing included only two squares: the original one and the square inserted before. If we inverted the insert calls, we would see only one inserted after. We were totally stumped until we printed out the content of new_square:&lt;/p&gt;
-&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;javascript&#39;&gt; &lt;span class=&#39;nx&#39;&gt;$&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;div&lt;/span&gt; &lt;span class=&#39;kr&#39;&gt;class&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;=&lt;/span&gt;&lt;span class=&#39;s2&#39;&gt;&amp;quot;square&amp;quot;&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&#39;err&#39;&gt;/div&amp;gt;) &lt;/span&gt;
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;javascript&#39;&gt; &lt;span class=&#39;nx&#39;&gt;$&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;s1&#39;&gt;&amp;#39;&amp;lt;div class=&amp;quot;square&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;We were actually passing a reference to a jQuery OBJECT into the insert methods, so in essence, we were creating the object once and then passing it around to different locations. When we changed new_square from a jQuery object:&lt;/p&gt;
 &lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;javascript&#39;&gt; &lt;span class=&#39;kd&#39;&gt;var&lt;/span&gt; &lt;span class=&#39;nx&#39;&gt;new_square&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;s1&#39;&gt;&amp;#39;$(&amp;lt;div class=&amp;quot;square&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;)&amp;#39;&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;;&lt;/span&gt; 

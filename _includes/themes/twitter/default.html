@@ -48,33 +48,19 @@
 
     <div class="container-narrow">
 
-    <div class="row">
-      <div class="content span5">
+      <div class="content">
         {{ content }}
       </div>
-      <!-- <hr> -->
-
-      <div class="span1 pull-right">
-        <h3>Links</h3>
-        <p>
-          <a href="mailto:keighty.leonard@gmail.com"><img src="{{ ASSET_PATH }}/images/mail.png" alt="linkedin" width="32"></a>
-          <a href="http://www.github.com/keighty"><img src="{{ ASSET_PATH }}/images/github.png" alt="github"></a>
-          <a href="http://www.twitter.com/KeightyLeonard"><img src="{{ ASSET_PATH }}/images/twitter.png" alt="twitter" width="32"></a>
-          <a href="http://www.linkedin.com/in/katieleonard"><img src="{{ ASSET_PATH }}/images/linkedin.png" alt="linkedin" width="32"></a>
-        </p>
-      </div>
-    </div>
       <hr>
-      <footer class="span12">
+      <footer>
         <p>&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}
           with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
           and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
         </p>
-
       </footer>
 
     </div>
 
-    <!-- {% include JB/analytics %} -->
+    {% include JB/analytics %}
   </body>
 </html>
