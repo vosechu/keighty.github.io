@@ -10,6 +10,7 @@ http://katieleonard.ca/rss.xml
 http://katieleonard.ca/sitemap.txt
 http://katieleonard.ca/tags.html
 
+http://katieleonard.ca/2013/06/25/javascript-has-spies
 http://katieleonard.ca/jquery/2013/06/19/jquery-objects-vs-strings
 http://katieleonard.ca/jquery/2013/06/18/solving-namespace-conflicts-with-jquery
 http://katieleonard.ca/2013/06/15/blogging-with-jekyll-bootstrap
