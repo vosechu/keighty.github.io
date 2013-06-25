@@ -51,12 +51,31 @@
       <div class="content">
         {{ content }}
       </div>
+
       <hr>
+
       <footer>
+          <ul>
+            <a href="mailto:keighty.leonard@gmail.com"><img src="{{ ASSET_PATH }}/images/mail.png" alt="linkedin" width="32"></a>
+            <a href="http://www.github.com/keighty" target="_blank"><img src="{{ ASSET_PATH }}/images/github.png" alt="github"></a>
+            <a href="http://www.twitter.com/KeightyLeonard" target="_blank"><img src="{{ ASSET_PATH }}/images/twitter.png" alt="twitter" width="32"></a>
+            <a href="http://www.linkedin.com/in/katieleonard" target="_blank"><img src="{{ ASSET_PATH }}/images/linkedin.png" alt="linkedin" width="32"></a>
+            <a href="{{ site.production_url }}/rss.xml" target="_blank"><img src="{{ ASSET_PATH }}/images/rss.jpeg" alt="linkedin" width="32"></a>
+          </ul>
+          <hr>
+          <h4>About Me</h4>
+          <p>I am transitioning from research into web development, and
+             can't wait to get creative in the Portland webdev community. </p>
+          <p>I love refactoring in code and in life - making things simple,
+              clean, and concise is a real passion. I am an avid bridge player,
+              love the sport of curling, and can occasionally be found performing
+              with a tap-dance troop.</p>
+
         <p>&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}
           with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
           and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
         </p>
+        </div>
       </footer>
 
     </div>
