@@ -7,11 +7,11 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Blog</title>
+	<title>Hoisting with JavaScript</title>
 	<meta name="author" content="Katie Leonard">
 	<link href='/assets/themes/the-program/css/style.css' rel="stylesheet" media="all">
 	<link href='/assets/themes/the-program/css/mystyles.css' rel="stylesheet" media="all">
-	<link href="http://feeds.feedburner.com/" rel="alternate" title="Blog" type="application/atom+xml">
+	<link href="http://feeds.feedburner.com/" rel="alternate" title="Hoisting with JavaScript" type="application/atom+xml">
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
 </head>
 <body>
@@ -36,7 +36,7 @@
     
       
       	
-      	<li class="active"><a href="/blog/index.html" class="active">Blog</a></li>
+      	<li><a href="/blog/index.html">Blog</a></li>
       	
       
     
@@ -113,139 +113,62 @@
 			<div class="unit-inner unit-body-inner">
 				<div class="entry-content">
 					
-<article class="unit-article layout-page">
+<article class="unit-article layout-post">
 	<div class="unit-inner unit-article-inner">
 		<div class="content">
 			<header>
 				<div class="unit-head">
 					<div class="unit-inner unit-head-inner">
-						<h1 class="h2 entry-title">Blog</h1>
+						<h1 class="h2 entry-title">Hoisting with JavaScript</h1>
 					</div><!-- unit-inner -->
 				</div><!-- unit-head -->
 			</header>
 
 			<div class="bd">
 				<div class="entry-content">
-					
+					<p>I am really enjoying <a href='http://www.amazon.com/Test-Driven-JavaScript-Development-Developers-Library/dp/0321683919'>Test-Driven Development</a> by Christian Johansen</p>
 
+<p>I picked up this little gem this morning as I was learning about functions and the various objects associated with them:</p>
 
+<p>You CANNOT use function declarations in conditionals. Take this example:</p>
+<div class='highlight'><pre><code class='java'><span class='k'>if</span> <span class='o'>(</span><span class='n'>String</span><span class='o'>.</span><span class='na'>prototype</span><span class='o'>.</span><span class='na'>trim</span><span class='o'>)</span> <span class='o'>{</span>
+  <span class='n'>function</span> <span class='nf'>trim</span><span class='o'>(</span><span class='n'>str</span><span class='o'>)</span> <span class='o'>{</span>
+    <span class='k'>return</span> <span class='n'>str</span><span class='o'>.</span><span class='na'>trim</span><span class='o'>();</span>
+  <span class='o'>}</span>
+<span class='k'>else</span> <span class='o'>{</span>
+  <span class='n'>function</span> <span class='nf'>trim</span><span class='o'>(</span><span class='n'>str</span><span class='o'>){</span>
+    <span class='k'>return</span> <span class='n'>str</span><span class='o'>.</span><span class='na'>replace</span><span class='o'>(/^</span><span class='err'>\</span><span class='n'>s</span><span class='o'>+|</span><span class='err'>\</span><span class='n'>s</span><span class='o'>+</span><span class='n'>$</span><span class='o'>/</span><span class='n'>g</span><span class='o'>,</span> <span class='s'>&quot;&quot;</span><span class='o'>);</span>
+  <span class='o'>}</span>
+<span class='o'>}</span>
+</code></pre></div>
+<p>What is wrong with that, you might ask? HOISTING! Both functions are hoisted up to the global variable before execution, which means that the second one always overwrites the first one.</p>
 
+<p>This is a better method:</p>
+<div class='highlight'><pre><code class='java'><span class='k'>if</span><span class='o'>(!</span><span class='n'>String</span><span class='o'>.</span><span class='na'>prototype</span><span class='o'>.</span><span class='na'>trim</span><span class='o'>)</span> <span class='o'>{</span>
+  <span class='n'>String</span><span class='o'>.</span><span class='na'>prototype</span><span class='o'>.</span><span class='na'>trim</span> <span class='o'>=</span> <span class='n'>function</span> <span class='n'>trim</span><span class='o'>()</span> <span class='o'>{</span>
+    <span class='k'>return</span> <span class='k'>this</span><span class='o'>.</span><span class='na'>replace</span><span class='o'>(/^</span><span class='err'>\</span><span class='n'>s</span><span class='o'>+|</span><span class='err'>\</span><span class='n'>s</span><span class='o'>+</span><span class='n'>$</span><span class='o'>/</span><span class='n'>g</span><span class='o'>,</span> <span class='s'>&quot;&quot;</span><span class='o'>)</span>
+  <span class='o'>}</span>
+<span class='o'>}</span>
+</code></pre></div>
+<p>This way, we are not overwriting any browser-available Trim methods, we are declaring the method on the String.prototype, which means it is available to ALL strings in scope, AND we have named it so that it will be more visible in a stack trace in case something goes wrong.</p>
 
-
-  
-    
-    
-    
-    
-  
-    
-      <h2>2013</h2>
-      <h3>June</h3>
-      <ul>
-    
-  
-    <li><span>June 26, 2013</span> &raquo; <a href="/javascript/2013/06/26/hoisting-with-javascript">Hoisting with JavaScript</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>June 25, 2013</span> &raquo; <a href="/2013/06/25/javascript-has-spies">Javascript has spies</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>June 19, 2013</span> &raquo; <a href="/jquery/2013/06/19/jquery-objects-vs-strings">jQuery objects vs strings</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>June 18, 2013</span> &raquo; <a href="/jquery/2013/06/18/solving-namespace-conflicts-with-jquery">Namespaces and jQuery</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>June 15, 2013</span> &raquo; <a href="/2013/06/15/blogging-with-jekyll-bootstrap">Blogging with Jekyll Bootstrap</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>June 14, 2013</span> &raquo; <a href="/tdd/testing/2013/06/14/TDD-is-the-way-to-be">I admit it, I love TDD</a></li>
-  
-    
-      </ul>
-    
-  
-
-
-
-<ul class="tag_box inline">
-  
-  
+<p>AWESOME</p>
+					<div class="meta">
+						<p class="date-publish">
+							Published: 
+							<date class="date-pub" title="2013-06-26T00:00:00-07:00" datetime="2013-06-26T00:00:00-07:00" pubdate>
+							<span class="month"><abbr>June</abbr></span>
+							<span class="day">26</span>
+							<span class="year">2013</span>
+							</date>
+						</p>
+						<ul class="list-category list-linear">
+							<li class="list-head">category: </li>
+							
+							
 
 
   
-     
-    	<li><a href="/categories.html#tdd-ref">
-    		tdd <span>1</span>
-    	</a></li>
-     
-    	<li><a href="/categories.html#testing-ref">
-    		testing <span>1</span>
-    	</a></li>
-     
-    	<li><a href="/categories.html#jquery-ref">
-    		jquery <span>2</span>
-    	</a></li>
      
     	<li><a href="/categories.html#javascript-ref">
     		javascript <span>1</span>
@@ -254,13 +177,45 @@
   
 
 
-</ul>
+						</ul>
+						<ul class="list-tag list-linear">
+							<li class="list-head">tags: </li>
+							
+							
 
+
+  
+    
+  
+
+
+
+						</ul>
+					</div><!-- meta -->
 				</div><!-- entry-content -->
+				<div class="misc-content">
+					<div class="social">
+						<ul class="list-linear">
+							<li><div class="twitter-tweet"><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="KeightyLeonard" data-lang="en">Tweet</a></div></li>
+							<li><div class="twitter-follow"><a href="https://twitter.com/KeightyLeonard" class="twitter-follow-button" data-show-count="false" data-lang="en"></a></div></li>
+						</ul>
+					</div>
+					<div class="comment">
+					
+					</div>
+				</div><!-- misc-content -->
 			</div><!-- bd -->
-
 			<footer class="unit-foot">
 				<div class="unit-inner unit-foot-inner">
+					<nav class="pagination">
+						<ul>
+							
+							<li class="prev"><a class="internal" rel="prev"  href="/2013/06/25/javascript-has-spies" title="View Javascript has spies">&laquo; Javascript has spies</a></li>
+							
+							
+							
+						</ul>
+					</nav>
 					<p class="gotop">
 						<a href="#page">Back to Top</a>
 					</p>
@@ -313,7 +268,7 @@
 		};
 	load('//platform.twitter.com/widgets.js', 'tweetjs');
 	// load('https://apis.google.com/js/plusone.js', 'gplus1js'); // Checkout http://j.mp/ApDgMr for usage html for this is <div class="g-plusone" data-size="medium"></div>
-	// load('//connect.facebook.net/en_US/all.js#xfbml=1', 'fbjssdk'); // Checkout http://j.mp/wZw2xR for using open graph protorol html for this is <div class="fb-like" data-href="/blog/index.html" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana"></div>
+	// load('//connect.facebook.net/en_US/all.js#xfbml=1', 'fbjssdk'); // Checkout http://j.mp/wZw2xR for using open graph protorol html for this is <div class="fb-like" data-href="/javascript/2013/06/26/hoisting-with-javascript" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana"></div>
 	}(document, 'script'));
 </script>
 <script>

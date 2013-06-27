@@ -4,13 +4,47 @@
  <title>Katie Leonard</title>
  <link href="http://katieleonard.ca/" rel="self"/>
  <link href="http://katieleonard.ca"/>
- <updated>2013-06-25T16:34:58-07:00</updated>
+ <updated>2013-06-26T19:10:38-07:00</updated>
  <id>http://katieleonard.ca</id>
  <author>
    <name>Katie Leonard</name>
    <email>keighty.leonard@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Hoisting with JavaScript</title>
+   <link href="http://katieleonard.ca/javascript/2013/06/26/hoisting-with-javascript"/>
+   <updated>2013-06-26T00:00:00-07:00</updated>
+   <id>http://katieleonard.ca/javascript/2013/06/26/hoisting-with-javascript</id>
+   <content type="html">&lt;p&gt;I am really enjoying &lt;a href=&#39;http://www.amazon.com/Test-Driven-JavaScript-Development-Developers-Library/dp/0321683919&#39;&gt;Test-Driven Development&lt;/a&gt; by Christian Johansen&lt;/p&gt;
+
+&lt;p&gt;I picked up this little gem this morning as I was learning about functions and the various objects associated with them:&lt;/p&gt;
+
+&lt;p&gt;You CANNOT use function declarations in conditionals. Take this example:&lt;/p&gt;
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;java&#39;&gt;&lt;span class=&#39;k&#39;&gt;if&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;String&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;na&#39;&gt;prototype&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;na&#39;&gt;trim&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;)&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;{&lt;/span&gt;
+  &lt;span class=&#39;n&#39;&gt;function&lt;/span&gt; &lt;span class=&#39;nf&#39;&gt;trim&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;str&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;)&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;{&lt;/span&gt;
+    &lt;span class=&#39;k&#39;&gt;return&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;str&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;na&#39;&gt;trim&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;();&lt;/span&gt;
+  &lt;span class=&#39;o&#39;&gt;}&lt;/span&gt;
+&lt;span class=&#39;k&#39;&gt;else&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;{&lt;/span&gt;
+  &lt;span class=&#39;n&#39;&gt;function&lt;/span&gt; &lt;span class=&#39;nf&#39;&gt;trim&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;str&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;){&lt;/span&gt;
+    &lt;span class=&#39;k&#39;&gt;return&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;str&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;na&#39;&gt;replace&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;(/^&lt;/span&gt;&lt;span class=&#39;err&#39;&gt;\&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;s&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;+|&lt;/span&gt;&lt;span class=&#39;err&#39;&gt;\&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;s&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;+&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;$&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;/&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;g&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;s&#39;&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;);&lt;/span&gt;
+  &lt;span class=&#39;o&#39;&gt;}&lt;/span&gt;
+&lt;span class=&#39;o&#39;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;What is wrong with that, you might ask? HOISTING! Both functions are hoisted up to the global variable before execution, which means that the second one always overwrites the first one.&lt;/p&gt;
+
+&lt;p&gt;This is a better method:&lt;/p&gt;
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;java&#39;&gt;&lt;span class=&#39;k&#39;&gt;if&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;(!&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;String&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;na&#39;&gt;prototype&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;na&#39;&gt;trim&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;)&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;{&lt;/span&gt;
+  &lt;span class=&#39;n&#39;&gt;String&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;na&#39;&gt;prototype&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;na&#39;&gt;trim&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;function&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;trim&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;()&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;{&lt;/span&gt;
+    &lt;span class=&#39;k&#39;&gt;return&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;this&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;na&#39;&gt;replace&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;(/^&lt;/span&gt;&lt;span class=&#39;err&#39;&gt;\&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;s&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;+|&lt;/span&gt;&lt;span class=&#39;err&#39;&gt;\&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;s&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;+&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;$&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;/&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;g&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;s&#39;&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;)&lt;/span&gt;
+  &lt;span class=&#39;o&#39;&gt;}&lt;/span&gt;
+&lt;span class=&#39;o&#39;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This way, we are not overwriting any browser-available Trim methods, we are declaring the method on the String.prototype, which means it is available to ALL strings in scope, AND we have named it so that it will be more visible in a stack trace in case something goes wrong.&lt;/p&gt;
+
+&lt;p&gt;AWESOME&lt;/p&gt;</content>
+ </entry>
  
  <entry>
    <title>Javascript has spies</title>
