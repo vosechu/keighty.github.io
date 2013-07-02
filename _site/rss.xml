@@ -5,8 +5,8 @@
         <description>Katie Leonard - Katie Leonard</description>
         <link>http://katieleonard.ca</link>
         <link>http://katieleonard.ca</link>
-        <lastBuildDate>2013-06-29T11:12:49-07:00</lastBuildDate>
-        <pubDate>2013-06-29T11:12:49-07:00</pubDate>
+        <lastBuildDate>2013-07-02T09:24:03-07:00</lastBuildDate>
+        <pubDate>2013-07-02T09:24:03-07:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -16,7 +16,7 @@
 
 &lt;h3 id=&#39;rails_4_does_not_come_with_a_default_indexhtml&#39;&gt;Rails 4 does not come with a default index.html&lt;/h3&gt;
 
-&lt;p&gt;There I was, gleefully watching the slug compile on heroku (after several abortive attempts before I realized I had not moved the sqlite3 gem into the development environment &amp;#8211; heroku doesn&amp;#8217;t like that at all). All seemed fine, I typed&lt;/p&gt;
+&lt;p&gt;There I was, gleefully watching the slug compile on heroku (after several abortive attempts, I realized I had not moved the sqlite3 gem into the development environment &amp;#8211; heroku doesn&amp;#8217;t like that). All seemed fine, I typed&lt;/p&gt;
 &lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;java&#39;&gt;&lt;span class=&#39;n&#39;&gt;$&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;heroku&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;open&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;and what greeted me? A 404 error page! Something has gone horribly wrong! I have been rejected by heroku! I try again from the beginning, ensuring I have followed all the steps.. what could I have missed? Same result. But, Mr. Hartl, said it was easy&amp;#8230; what was I missing?&lt;/p&gt;
