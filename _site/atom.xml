@@ -4,13 +4,71 @@
  <title>Katie Leonard</title>
  <link href="http://katieleonard.ca/" rel="self"/>
  <link href="http://katieleonard.ca"/>
- <updated>2013-07-02T09:24:03-07:00</updated>
+ <updated>2013-07-04T16:01:38-07:00</updated>
  <id>http://katieleonard.ca</id>
  <author>
    <name>Katie Leonard</name>
    <email>keighty.leonard@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Red, Green, Refactor! A Workflow for Rails</title>
+   <link href="http://katieleonard.ca/rails/2013/07/03/red-green-refactor"/>
+   <updated>2013-07-03T00:00:00-07:00</updated>
+   <id>http://katieleonard.ca/rails/2013/07/03/red-green-refactor</id>
+   <content type="html">&lt;h3 id=&#39;1_write_a_failing_test&#39;&gt;1. Write a failing test&lt;/h3&gt;
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;ruby&#39;&gt;&lt;span class=&#39;n&#39;&gt;describe&lt;/span&gt; &lt;span class=&#39;s2&#39;&gt;&amp;quot;Static About page&amp;quot;&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;do&lt;/span&gt;
+  &lt;span class=&#39;n&#39;&gt;it&lt;/span&gt; &lt;span class=&#39;s2&#39;&gt;&amp;quot;should have the content &amp;#39;About Us&amp;#39;&amp;quot;&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;do&lt;/span&gt;
+    &lt;span class=&#39;n&#39;&gt;visit&lt;/span&gt; &lt;span class=&#39;s1&#39;&gt;&amp;#39;/static_pages/about&amp;#39;&lt;/span&gt;
+    &lt;span class=&#39;n&#39;&gt;page&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;should&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;have_content&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;s1&#39;&gt;&amp;#39;About Us&amp;#39;&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;)&lt;/span&gt;
+  &lt;span class=&#39;k&#39;&gt;end&lt;/span&gt;
+&lt;span class=&#39;k&#39;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Use the failures to drive development:&lt;/p&gt;
+
+&lt;h3 id=&#39;2_no_route&#39;&gt;2. No Route&lt;/h3&gt;
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;bash&#39;&gt;Failures:
+  1&lt;span class=&#39;o&#39;&gt;)&lt;/span&gt; Static About page should have the content &lt;span class=&#39;s1&#39;&gt;&amp;#39;About Us&amp;#39;&lt;/span&gt;
+     Failure/Error: visit &lt;span class=&#39;s1&#39;&gt;&amp;#39;/static_pages/about&amp;#39;&lt;/span&gt;
+     ActionController::RoutingError:
+       No route matches &lt;span class=&#39;o&#39;&gt;[&lt;/span&gt;GET&lt;span class=&#39;o&#39;&gt;]&lt;/span&gt; &lt;span class=&#39;s2&#39;&gt;&amp;quot;/static_pages/about&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Add one to /config/routes.rb:&lt;/p&gt;
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;ruby&#39;&gt;&lt;span class=&#39;ss&#39;&gt;DemoApp2&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;:&lt;/span&gt;&lt;span class=&#39;ss&#39;&gt;:Application&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;routes&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;draw&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;do&lt;/span&gt;
+  &lt;span class=&#39;n&#39;&gt;get&lt;/span&gt; &lt;span class=&#39;s2&#39;&gt;&amp;quot;static_pages/about&amp;quot;&lt;/span&gt;
+  &lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;
+&lt;span class=&#39;k&#39;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#39;3no_controller&#39;&gt;3.No Controller&lt;/h3&gt;
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;bash&#39;&gt;Failures:
+
+  1&lt;span class=&#39;o&#39;&gt;)&lt;/span&gt; Static About page should have the content &lt;span class=&#39;s1&#39;&gt;&amp;#39;About Us&amp;#39;&lt;/span&gt;
+     Failure/Error: visit &lt;span class=&#39;s1&#39;&gt;&amp;#39;/static_pages/about&amp;#39;&lt;/span&gt;
+     AbstractController::ActionNotFound:
+       The action &lt;span class=&#39;s1&#39;&gt;&amp;#39;about&amp;#39;&lt;/span&gt; could not be found &lt;span class=&#39;k&#39;&gt;for &lt;/span&gt;StaticPagesController
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Add one to /controllers/static_pages_controller.rb&lt;/p&gt;
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;ruby&#39;&gt;&lt;span class=&#39;k&#39;&gt;class&lt;/span&gt; &lt;span class=&#39;nc&#39;&gt;StaticPagesController&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#39;no&#39;&gt;ApplicationController&lt;/span&gt;
+  &lt;span class=&#39;k&#39;&gt;def&lt;/span&gt; &lt;span class=&#39;nf&#39;&gt;about&lt;/span&gt;
+  &lt;span class=&#39;k&#39;&gt;end&lt;/span&gt;
+&lt;span class=&#39;k&#39;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#39;4_no_page&#39;&gt;4. No Page&lt;/h3&gt;
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;ruby&#39;&gt;&lt;span class=&#39;ss&#39;&gt;Failures&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;:&lt;/span&gt;
+  &lt;span class=&#39;mi&#39;&gt;1&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;)&lt;/span&gt; &lt;span class=&#39;no&#39;&gt;Static&lt;/span&gt; &lt;span class=&#39;no&#39;&gt;About&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;page&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;should&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;have&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;the&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;content&lt;/span&gt; &lt;span class=&#39;s1&#39;&gt;&amp;#39;About Us&amp;#39;&lt;/span&gt;
+     &lt;span class=&#39;no&#39;&gt;Failure&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;/&lt;/span&gt;&lt;span class=&#39;ss&#39;&gt;Error&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;visit&lt;/span&gt; &lt;span class=&#39;s1&#39;&gt;&amp;#39;/static_pages/about&amp;#39;&lt;/span&gt;
+     &lt;span class=&#39;ss&#39;&gt;ActionView&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;:&lt;/span&gt;&lt;span class=&#39;ss&#39;&gt;:MissingTemplate&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;:&lt;/span&gt;
+       &lt;span class=&#39;no&#39;&gt;Missing&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;template&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;static_pages&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;/&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;about&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;application&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;/&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;about&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;with&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;{&lt;/span&gt;&lt;span class=&#39;ss&#39;&gt;:locale&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;=&amp;gt;[&lt;/span&gt;&lt;span class=&#39;ss&#39;&gt;:en&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;]&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;:formats&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;=&amp;gt;[&lt;/span&gt;&lt;span class=&#39;ss&#39;&gt;:html&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;]&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;:handlers&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;=&amp;gt;[&lt;/span&gt;&lt;span class=&#39;ss&#39;&gt;:erb&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;:builder&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;:raw&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;:ruby&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;:jbuilder&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;:coffee&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;]&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;}&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Add a view to /static_pages/about.html.erb&lt;/p&gt;
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;html&#39;&gt;&lt;span class=&#39;cp&#39;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+  &lt;span class=&#39;nt&#39;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+    &lt;span class=&#39;nt&#39;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;About Us&lt;span class=&#39;nt&#39;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+  &lt;span class=&#39;nt&#39;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&#39;nt&#39;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+ </entry>
  
  <entry>
    <title>No index.html, no cry</title>
@@ -21,7 +79,7 @@
 
 &lt;h3 id=&#39;rails_4_does_not_come_with_a_default_indexhtml&#39;&gt;Rails 4 does not come with a default index.html&lt;/h3&gt;
 
-&lt;p&gt;There I was, gleefully watching the slug compile on heroku (after several abortive attempts, I realized I had not moved the sqlite3 gem into the development environment &amp;#8211; heroku doesn&amp;#8217;t like that). All seemed fine, I typed&lt;/p&gt;
+&lt;p&gt;There I was, gleefully watching the slug compile on heroku (after several abortive attempts I realized I had not moved the sqlite3 gem into the development environment &amp;#8211; heroku doesn&amp;#8217;t like that). All seemed fine, I typed&lt;/p&gt;
 &lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;java&#39;&gt;&lt;span class=&#39;n&#39;&gt;$&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;heroku&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;open&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;and what greeted me? A 404 error page! Something has gone horribly wrong! I have been rejected by heroku! I try again from the beginning, ensuring I have followed all the steps.. what could I have missed? Same result. But, Mr. Hartl, said it was easy&amp;#8230; what was I missing?&lt;/p&gt;
