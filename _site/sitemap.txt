@@ -5,6 +5,7 @@ http://katieleonard.ca/categories.html
 http://katieleonard.ca/index.html
 http://katieleonard.ca/pages.html
 http://katieleonard.ca/projects/index.html
+http://katieleonard.ca/projects/web.html
 http://katieleonard.ca/resume/index.html
 http://katieleonard.ca/rss.xml
 http://katieleonard.ca/sitemap.txt
