@@ -5,10 +5,41 @@
         <description>Katie Leonard - Katie Leonard</description>
         <link>http://katieleonard.ca</link>
         <link>http://katieleonard.ca</link>
-        <lastBuildDate>2013-07-09T10:00:27-07:00</lastBuildDate>
-        <pubDate>2013-07-09T10:00:27-07:00</pubDate>
+        <lastBuildDate>2013-07-09T16:56:09-07:00</lastBuildDate>
+        <pubDate>2013-07-09T16:56:09-07:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>Partial to Sinatra</title>
+                <description>&lt;p&gt;Having just discovered the magic of using partials to refactor html in rails, imagine my delight when I found it to be even easier in Sinatra.&lt;/p&gt;
+
+&lt;p&gt;A partial is a just a fragment of html (or erb). They can be used for rendering duplicate or dynamic content into otherwise static pages.&lt;/p&gt;
+
+&lt;p&gt;I was writing html for my JSGames sinatra application when I caught myself copying a snippet of html onto my clipboard. Why on earth would I duplicate code? I want to include a block of text on both the index and the game page, but I don&amp;#8217;t want to have to modify it in two places when I inevitably get around to rewriting it.&lt;/p&gt;
+
+&lt;p&gt;The solution?&lt;/p&gt;
+
+&lt;p&gt;Factor out the duplicate html into a partial (begin name with _ for identification purposes). For example &lt;code&gt;_gameDescription.erb&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;html&#39;&gt;&lt;span class=&#39;nt&#39;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Game Title&lt;span class=&#39;nt&#39;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+&lt;span class=&#39;nt&#39;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Game description&lt;span class=&#39;nt&#39;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Add that partial wherever you want to display this snippet of code:&lt;/p&gt;
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;ruby&#39;&gt;&lt;span class=&#39;o&#39;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;erb&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;:_gameDescription&lt;/span&gt;  &lt;span class=&#39;o&#39;&gt;%&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;For example:&lt;/p&gt;
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;ruby&#39;&gt;&lt;span class=&#39;o&#39;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;div&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;class&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;=&lt;/span&gt;&lt;span class=&#39;s2&#39;&gt;&amp;quot;span4 pagination-centered&amp;quot;&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#39;o&#39;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#39;sx&#39;&gt;%= erb :_solitaireDesc  %&amp;gt;&lt;/span&gt;
+&lt;span class=&#39;sx&#39;&gt;  &amp;lt;a href=&lt;/span&gt;&lt;span class=&#39;s2&#39;&gt;&amp;quot;/game&amp;quot;&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;class&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;=&lt;/span&gt;&lt;span class=&#39;s2&#39;&gt;&amp;quot;btn btn-large&amp;quot;&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#39;no&#39;&gt;Play&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#39;sr&#39;&gt;/a&amp;gt;&lt;/span&gt;
+&lt;span class=&#39;sr&#39;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;div&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Check out the final product on &lt;a href=&#39;http://js-games.herokuapp.com/solitaire&#39;&gt;JSGames&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Awesome&lt;/p&gt;</description>
+                <link>http://katieleonard.ca/sinatra/2013/07/09/partial-to-sinatra</link>
+                <guid>http://katieleonard.ca/sinatra/2013/07/09/partial-to-sinatra</guid>
+                <pubDate>2013-07-09T00:00:00-07:00</pubDate>
+        </item>
 
         <item>
                 <title>Red, Green, Refactor! A Workflow for Rails</title>
