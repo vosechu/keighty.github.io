@@ -7,11 +7,11 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Red, Green, Refactor! A Workflow for Rails</title>
+	<title>A Flash of Understanding</title>
 	<meta name="author" content="Katie Leonard">
 	<link href='/assets/themes/the-program/css/style.css' rel="stylesheet" media="all">
 	<link href='/assets/themes/the-program/css/mystyles.css' rel="stylesheet" media="all">
-	<link href="http://feeds.feedburner.com/" rel="alternate" title="Red, Green, Refactor! A Workflow for Rails" type="application/atom+xml">
+	<link href="http://feeds.feedburner.com/" rel="alternate" title="A Flash of Understanding" type="application/atom+xml">
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
 </head>
 <body>
@@ -122,70 +122,71 @@
 			<header>
 				<div class="unit-head">
 					<div class="unit-inner unit-head-inner">
-						<h1 class="h2 entry-title">Red, Green, Refactor! A Workflow for Rails</h1>
+						<h1 class="h2 entry-title">A Flash of Understanding</h1>
 					</div><!-- unit-inner -->
 				</div><!-- unit-head -->
 			</header>
 
 			<div class="bd">
 				<div class="entry-content">
-					<h3 id='1_write_a_failing_test'>1. Write a failing test</h3>
-<div class='highlight'><pre><code class='ruby'><span class='n'>describe</span> <span class='s2'>&quot;Static About page&quot;</span> <span class='k'>do</span>
-  <span class='n'>it</span> <span class='s2'>&quot;should have the content &#39;About Us&#39;&quot;</span> <span class='k'>do</span>
-    <span class='n'>visit</span> <span class='s1'>&#39;/static_pages/about&#39;</span>
-    <span class='n'>page</span><span class='o'>.</span><span class='n'>should</span> <span class='n'>have_content</span><span class='p'>(</span><span class='s1'>&#39;About Us&#39;</span><span class='p'>)</span>
+					<p>The Rails4 user scaffold comes with some built in methods. The update method is a good example:</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># PATCH/PUT /users/1</span>
+<span class='c1'># PATCH/PUT /users/1.json</span>
+<span class='k'>def</span> <span class='nf'>update</span>
+  <span class='n'>respond_to</span> <span class='k'>do</span> <span class='o'>|</span><span class='nb'>format</span><span class='o'>|</span>
+    <span class='k'>if</span> <span class='vi'>@user</span><span class='o'>.</span><span class='n'>update</span><span class='p'>(</span><span class='n'>user_params</span><span class='p'>)</span>
+      <span class='nb'>format</span><span class='o'>.</span><span class='n'>html</span> <span class='p'>{</span> <span class='n'>redirect_to</span> <span class='vi'>@user</span><span class='p'>,</span> <span class='ss'>notice</span><span class='p'>:</span> <span class='s1'>&#39;Profile updated.&#39;</span> <span class='p'>}</span>
+      <span class='nb'>format</span><span class='o'>.</span><span class='n'>json</span> <span class='p'>{</span> <span class='n'>head</span> <span class='ss'>:no_content</span> <span class='p'>}</span>
+    <span class='k'>else</span>
+      <span class='nb'>format</span><span class='o'>.</span><span class='n'>html</span> <span class='p'>{</span> <span class='n'>render</span> <span class='ss'>action</span><span class='p'>:</span> <span class='s1'>&#39;edit&#39;</span> <span class='p'>}</span>
+      <span class='nb'>format</span><span class='o'>.</span><span class='n'>json</span> <span class='p'>{</span> <span class='n'>render</span> <span class='ss'>json</span><span class='p'>:</span> <span class='vi'>@user</span><span class='o'>.</span><span class='n'>errors</span><span class='p'>,</span> <span class='ss'>status</span><span class='p'>:</span> <span class='ss'>:unprocessable_entity</span> <span class='p'>}</span>
+    <span class='k'>end</span>
   <span class='k'>end</span>
 <span class='k'>end</span>
 </code></pre></div>
-<p>Use the failures to drive development:</p>
+<p>Trundling along the <a href='http://ruby.railstutorial.org/chapters/updating-showing-and-deleting-users?version=4.0#top'>Hartl railstutorial</a>, I needed to write some logic to allow a user to update their information.</p>
 
-<h3 id='2_no_route'>2. No Route</h3>
-<div class='highlight'><pre><code class='bash'>Failures:
-  1<span class='o'>)</span> Static About page should have the content <span class='s1'>&#39;About Us&#39;</span>
-     Failure/Error: visit <span class='s1'>&#39;/static_pages/about&#39;</span>
-     ActionController::RoutingError:
-       No route matches <span class='o'>[</span>GET<span class='o'>]</span> <span class='s2'>&quot;/static_pages/about&quot;</span>
-</code></pre></div>
-<p>Add one to /config/routes.rb:</p>
-<div class='highlight'><pre><code class='ruby'><span class='ss'>DemoApp2</span><span class='p'>:</span><span class='ss'>:Application</span><span class='o'>.</span><span class='n'>routes</span><span class='o'>.</span><span class='n'>draw</span> <span class='k'>do</span>
-  <span class='n'>get</span> <span class='s2'>&quot;static_pages/about&quot;</span>
-  <span class='o'>.</span><span class='n'>.</span><span class='o'>.</span>
-<span class='k'>end</span>
-</code></pre></div>
-<h3 id='3no_controller'>3.No Controller</h3>
-<div class='highlight'><pre><code class='bash'>Failures:
-
-  1<span class='o'>)</span> Static About page should have the content <span class='s1'>&#39;About Us&#39;</span>
-     Failure/Error: visit <span class='s1'>&#39;/static_pages/about&#39;</span>
-     AbstractController::ActionNotFound:
-       The action <span class='s1'>&#39;about&#39;</span> could not be found <span class='k'>for </span>StaticPagesController
-</code></pre></div>
-<p>Add one to /controllers/static_pages_controller.rb</p>
-<div class='highlight'><pre><code class='ruby'><span class='k'>class</span> <span class='nc'>StaticPagesController</span> <span class='o'>&lt;</span> <span class='no'>ApplicationController</span>
-  <span class='k'>def</span> <span class='nf'>about</span>
+<p>As a <a href='http://www.katieleonard.ca/tdd/testing/2013/06/14/TDD-is-the-way-to-be/'>loyal TDD-er</a>, I wrote a test to check that users see a success message if they are able to update their infomation:</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>describe</span> <span class='s2'>&quot;updating with valid information&quot;</span> <span class='k'>do</span>
+  <span class='n'>let</span><span class='p'>(</span><span class='ss'>:new_name</span><span class='p'>)</span> <span class='p'>{</span> <span class='s2'>&quot;New Name&quot;</span> <span class='p'>}</span>
+  <span class='n'>let</span><span class='p'>(</span><span class='ss'>:new_email</span><span class='p'>)</span> <span class='p'>{</span> <span class='s2'>&quot;new@example.com&quot;</span> <span class='p'>}</span>
+  <span class='n'>before</span> <span class='k'>do</span>
+    <span class='n'>fill_in</span> <span class='s2'>&quot;Name&quot;</span><span class='p'>,</span> <span class='ss'>with</span><span class='p'>:</span> <span class='n'>new_name</span>
+    <span class='n'>fill_in</span> <span class='s2'>&quot;Email&quot;</span><span class='p'>,</span> <span class='ss'>with</span><span class='p'>:</span> <span class='n'>new_email</span>
+    <span class='n'>fill_in</span> <span class='s2'>&quot;Password&quot;</span><span class='p'>,</span> <span class='ss'>with</span><span class='p'>:</span> <span class='n'>user</span><span class='o'>.</span><span class='n'>password</span>
+    <span class='n'>fill_in</span> <span class='s2'>&quot;Confirm Password&quot;</span><span class='p'>,</span> <span class='ss'>with</span><span class='p'>:</span> <span class='n'>user</span><span class='o'>.</span><span class='n'>password</span>
+    <span class='n'>click_button</span> <span class='s2'>&quot;Save changes&quot;</span>
   <span class='k'>end</span>
+  <span class='n'>it</span> <span class='p'>{</span> <span class='n'>should</span> <span class='n'>have_selector</span><span class='p'>(</span><span class='s1'>&#39;div.alert.alert-success&#39;</span><span class='p'>)</span> <span class='p'>}</span>
 <span class='k'>end</span>
 </code></pre></div>
-<h3 id='4_no_page'>4. No Page</h3>
-<div class='highlight'><pre><code class='ruby'><span class='ss'>Failures</span><span class='p'>:</span>
-  <span class='mi'>1</span><span class='p'>)</span> <span class='no'>Static</span> <span class='no'>About</span> <span class='n'>page</span> <span class='n'>should</span> <span class='n'>have</span> <span class='n'>the</span> <span class='n'>content</span> <span class='s1'>&#39;About Us&#39;</span>
-     <span class='no'>Failure</span><span class='o'>/</span><span class='ss'>Error</span><span class='p'>:</span> <span class='n'>visit</span> <span class='s1'>&#39;/static_pages/about&#39;</span>
-     <span class='ss'>ActionView</span><span class='p'>:</span><span class='ss'>:MissingTemplate</span><span class='p'>:</span>
-       <span class='no'>Missing</span> <span class='n'>template</span> <span class='n'>static_pages</span><span class='o'>/</span><span class='n'>about</span><span class='p'>,</span> <span class='n'>application</span><span class='o'>/</span><span class='n'>about</span> <span class='n'>with</span> <span class='p'>{</span><span class='ss'>:locale</span><span class='o'>=&gt;[</span><span class='ss'>:en</span><span class='o'>]</span><span class='p'>,</span> <span class='ss'>:formats</span><span class='o'>=&gt;[</span><span class='ss'>:html</span><span class='o'>]</span><span class='p'>,</span> <span class='ss'>:handlers</span><span class='o'>=&gt;[</span><span class='ss'>:erb</span><span class='p'>,</span> <span class='ss'>:builder</span><span class='p'>,</span> <span class='ss'>:raw</span><span class='p'>,</span> <span class='ss'>:ruby</span><span class='p'>,</span> <span class='ss'>:jbuilder</span><span class='p'>,</span> <span class='ss'>:coffee</span><span class='o'>]</span><span class='p'>}</span><span class='o'>.</span>
-</code></pre></div>
-<p>Add a view to /static_pages/about.html.erb</p>
-<div class='highlight'><pre><code class='html'><span class='cp'>&lt;!DOCTYPE html&gt;</span>
-  <span class='nt'>&lt;body&gt;</span>
-    <span class='nt'>&lt;h1&gt;</span>About Us<span class='nt'>&lt;/h1&gt;</span>
-  <span class='nt'>&lt;/body&gt;</span>
-<span class='nt'>&lt;/html&gt;</span>
-</code></pre></div>
+<p>As expected, the tests should fail until I am able to log in.</p>
+
+<p>I modify the line 5 of the user controller to change the notice to a success message:</p>
+
+<p><div class='highlight'><pre><code class='ruby'><span class='nb'>format</span><span class='o'>.</span><span class='n'>html</span> <span class='p'>{</span> <span class='n'>redirect_to</span> <span class='vi'>@user</span><span class='p'>,</span> <span class='ss'>success</span><span class='p'>:</span> <span class='s2'>&quot;Profile updated&quot;</span> <span class='p'>}</span>
+</code></pre></div></p>
+
+<p>Seems reasonable, but my test for the flash message is still failing. Why won&#8217;t my page flash the user?!</p>
+
+<p>Quick as a flash, I asked <a href='https://itunes.apple.com/us/app/dash-docs-snippets/id458034879?mt=12'>Dash</a> about FlashHash.</p>
+
+<p>Lo, and behold! Notice and alert are built-in flash tags, but success is nowhere to be found. How can I express the satisfaction of <code>SUCCESS!!</code> with a tag as mundane as notice:?</p>
+
+<p>Thanks to duck-typing (if it walks like a duck and quacks like a duck, it is probably a hash.. right?) we can add our spiffy <code>success:</code> tag to flash, and share the appropriate level of enthusiasm with our users:</p>
+
+<p><div class='highlight'><pre><code class='ruby'><span class='nb'>format</span><span class='o'>.</span><span class='n'>html</span> <span class='p'>{</span> <span class='n'>redirect_to</span> <span class='vi'>@user</span><span class='p'>,</span> <span class='ss'>flash</span><span class='p'>:</span> <span class='p'>{</span> <span class='ss'>success</span><span class='p'>:</span> <span class='s2'>&quot;Profile updated&quot;</span> <span class='p'>}}</span>
+</code></pre></div></p>
+
+<p>All tests are green, and today I learned that flash is</p>
+
+<p>Awesome</p>
 					<div class="meta">
 						<p class="date-publish">
 							Published: 
-							<date class="date-pub" title="2013-07-03T00:00:00-07:00" datetime="2013-07-03T00:00:00-07:00" pubdate>
+							<date class="date-pub" title="2013-07-13T00:00:00-07:00" datetime="2013-07-13T00:00:00-07:00" pubdate>
 							<span class="month"><abbr>July</abbr></span>
-							<span class="day">03</span>
+							<span class="day">13</span>
 							<span class="year">2013</span>
 							</date>
 						</p>
@@ -237,13 +238,9 @@
 					<nav class="pagination">
 						<ul>
 							
-							<li class="prev"><a class="internal" rel="prev"  href="/rails4/2013/06/29/no-indexhtml-no-cry" title="View No index.html, no cry">&laquo; No index.html, no cry</a></li>
+							<li class="prev"><a class="internal" rel="prev"  href="/git/2013/07/11/best-practices-pull-requests" title="View Best Practices - Pull Requests">&laquo; Best Practices - Pull Requests</a></li>
 							
 							
-							<li class="pipe"> | </li>
-							
-							
-							<li class="next"><a class="internal" rel="next"  href="/sinatra/2013/07/09/partial-to-sinatra" title="View Partial to Sinatra">Partial to Sinatra &raquo;</a></li>
 							
 						</ul>
 					</nav>
@@ -299,7 +296,7 @@
 		};
 	load('//platform.twitter.com/widgets.js', 'tweetjs');
 	// load('https://apis.google.com/js/plusone.js', 'gplus1js'); // Checkout http://j.mp/ApDgMr for usage html for this is <div class="g-plusone" data-size="medium"></div>
-	// load('//connect.facebook.net/en_US/all.js#xfbml=1', 'fbjssdk'); // Checkout http://j.mp/wZw2xR for using open graph protorol html for this is <div class="fb-like" data-href="/rails/2013/07/03/red-green-refactor" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana"></div>
+	// load('//connect.facebook.net/en_US/all.js#xfbml=1', 'fbjssdk'); // Checkout http://j.mp/wZw2xR for using open graph protorol html for this is <div class="fb-like" data-href="/rails/2013/07/13/a-flash-of-understanding" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana"></div>
 	}(document, 'script'));
 </script>
 <script>

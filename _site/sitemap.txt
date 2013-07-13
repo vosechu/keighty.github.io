@@ -11,6 +11,7 @@ http://katieleonard.ca/rss.xml
 http://katieleonard.ca/sitemap.txt
 http://katieleonard.ca/tags.html
 
+http://katieleonard.ca/rails/2013/07/13/a-flash-of-understanding
 http://katieleonard.ca/git/2013/07/11/best-practices-pull-requests
 http://katieleonard.ca/sinatra/2013/07/09/partial-to-sinatra
 http://katieleonard.ca/rails/2013/07/03/red-green-refactor
