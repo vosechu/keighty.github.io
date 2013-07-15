@@ -10,17 +10,13 @@ group: navigation
 ## Objective
 
 >Short term: Use my skills in programming and project management to successfully transition my career from laboratory research into software development.
-
+>
 >Long term: Contribute meaningfully to the development of software tools that end users love interacting with.
 
 
 ## Qualifications
 
-2 years experience with the following technologies:
-* Java (J2EE and Android)
-* SQL
-* Ruby
-* HTML, CSS
+3+ years experience with Java (J2EE and Android), SQL, Ruby, HTML, CSS, perl, bash, awk
 
 ## Attributes
 * Creative, flexible, and resourceful in problem-solving
@@ -56,28 +52,24 @@ Database optimization for storage of cell-line library
 ##Education
 
 ####Cert. Software Development (Sept 2009 — Dec 2011)
-#####McGill University (Graduated on the Dean's List)
+McGill University (Graduated on the Dean's List)
 
 Courses include Java Programming, Database Design and Administration, Operating Systems Administration, Data Structures and Algorithms, Web Development, Network Administration, Systems Analysis, System Implementation, and Project Management.
 
 ####Bachelor of Science (Jan 1998 — June 2002)
-#####Simon Fraser University
+Simon Fraser University
 
 Biology, specializing in animal physiology. Minor in English.
 
 ####Cert. Liberal Arts (Jan 2000 — June 2002)
-#####Simon Fraser University
+Simon Fraser University
 
 Requirements include a variety of courses from many disciplines including philosophy, languages, sciences, Canadian studies, criminology, and sociology.
 
 ##Hobbies
-American Contract Bridge League ~ Life Master
-
-Visual Arts Center ~ Life Drawing Student
-
-Royal Montreal Curling Club ~ Board Member (Director of Communications)
-
-Klaxson Tap Dance Troop ~ Student
-
-Cadance Dance School ~ Student
+* American Contract Bridge League ~ Life Master
+* Visual Arts Center ~ Life Drawing Student
+* Royal Montreal Curling Club ~ Board Member (Director of Communications)
+* Klaxson Tap Dance Troop ~ Student
+* Cadance Dance School ~ Student
 
