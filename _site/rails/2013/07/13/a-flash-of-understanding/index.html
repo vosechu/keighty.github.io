@@ -129,21 +129,8 @@
 
 			<div class="bd">
 				<div class="entry-content">
-					<p>The Rails4 user scaffold comes with some built in methods. The update method is a good example:</p>
-<div class='highlight'><pre><code class='ruby'><span class='c1'># PATCH/PUT /users/1</span>
-<span class='c1'># PATCH/PUT /users/1.json</span>
-<span class='k'>def</span> <span class='nf'>update</span>
-  <span class='n'>respond_to</span> <span class='k'>do</span> <span class='o'>|</span><span class='nb'>format</span><span class='o'>|</span>
-    <span class='k'>if</span> <span class='vi'>@user</span><span class='o'>.</span><span class='n'>update</span><span class='p'>(</span><span class='n'>user_params</span><span class='p'>)</span>
-      <span class='nb'>format</span><span class='o'>.</span><span class='n'>html</span> <span class='p'>{</span> <span class='n'>redirect_to</span> <span class='vi'>@user</span><span class='p'>,</span> <span class='ss'>notice</span><span class='p'>:</span> <span class='s1'>&#39;Profile updated.&#39;</span> <span class='p'>}</span>
-      <span class='nb'>format</span><span class='o'>.</span><span class='n'>json</span> <span class='p'>{</span> <span class='n'>head</span> <span class='ss'>:no_content</span> <span class='p'>}</span>
-    <span class='k'>else</span>
-      <span class='nb'>format</span><span class='o'>.</span><span class='n'>html</span> <span class='p'>{</span> <span class='n'>render</span> <span class='ss'>action</span><span class='p'>:</span> <span class='s1'>&#39;edit&#39;</span> <span class='p'>}</span>
-      <span class='nb'>format</span><span class='o'>.</span><span class='n'>json</span> <span class='p'>{</span> <span class='n'>render</span> <span class='ss'>json</span><span class='p'>:</span> <span class='vi'>@user</span><span class='o'>.</span><span class='n'>errors</span><span class='p'>,</span> <span class='ss'>status</span><span class='p'>:</span> <span class='ss'>:unprocessable_entity</span> <span class='p'>}</span>
-    <span class='k'>end</span>
-  <span class='k'>end</span>
-<span class='k'>end</span>
-</code></pre></div>
+					<p>My page wouldn&#8217;t flash the user.</p>
+
 <p>Trundling along the <a href='http://ruby.railstutorial.org/chapters/updating-showing-and-deleting-users?version=4.0#top'>Hartl railstutorial</a>, I needed to write some logic to allow a user to update their information.</p>
 
 <p>As a <a href='http://www.katieleonard.ca/tdd/testing/2013/06/14/TDD-is-the-way-to-be/'>loyal TDD-er</a>, I wrote a test to check that users see a success message if they are able to update their infomation:</p>
@@ -162,7 +149,22 @@
 </code></pre></div>
 <p>As expected, the tests should fail until I am able to log in.</p>
 
-<p>I modify the line 5 of the user controller to change the notice to a success message:</p>
+<p>Since the Rails4 user scaffold comes with some nifty built in methods, I thought it would be easy to adapt them for my own ends:</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># PATCH/PUT /users/1</span>
+<span class='c1'># PATCH/PUT /users/1.json</span>
+<span class='k'>def</span> <span class='nf'>update</span>
+  <span class='n'>respond_to</span> <span class='k'>do</span> <span class='o'>|</span><span class='nb'>format</span><span class='o'>|</span>
+    <span class='k'>if</span> <span class='vi'>@user</span><span class='o'>.</span><span class='n'>update</span><span class='p'>(</span><span class='n'>user_params</span><span class='p'>)</span>
+      <span class='nb'>format</span><span class='o'>.</span><span class='n'>html</span> <span class='p'>{</span> <span class='n'>redirect_to</span> <span class='vi'>@user</span><span class='p'>,</span> <span class='ss'>notice</span><span class='p'>:</span> <span class='s1'>&#39;Profile updated.&#39;</span> <span class='p'>}</span>
+      <span class='nb'>format</span><span class='o'>.</span><span class='n'>json</span> <span class='p'>{</span> <span class='n'>head</span> <span class='ss'>:no_content</span> <span class='p'>}</span>
+    <span class='k'>else</span>
+      <span class='nb'>format</span><span class='o'>.</span><span class='n'>html</span> <span class='p'>{</span> <span class='n'>render</span> <span class='ss'>action</span><span class='p'>:</span> <span class='s1'>&#39;edit&#39;</span> <span class='p'>}</span>
+      <span class='nb'>format</span><span class='o'>.</span><span class='n'>json</span> <span class='p'>{</span> <span class='n'>render</span> <span class='ss'>json</span><span class='p'>:</span> <span class='vi'>@user</span><span class='o'>.</span><span class='n'>errors</span><span class='p'>,</span> <span class='ss'>status</span><span class='p'>:</span> <span class='ss'>:unprocessable_entity</span> <span class='p'>}</span>
+    <span class='k'>end</span>
+  <span class='k'>end</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>I modify the line 5 of the user controller to change the &#8220;notice&#8221; message to a &#8220;success&#8221; message:</p>
 
 <p><div class='highlight'><pre><code class='ruby'><span class='nb'>format</span><span class='o'>.</span><span class='n'>html</span> <span class='p'>{</span> <span class='n'>redirect_to</span> <span class='vi'>@user</span><span class='p'>,</span> <span class='ss'>success</span><span class='p'>:</span> <span class='s2'>&quot;Profile updated&quot;</span> <span class='p'>}</span>
 </code></pre></div></p>
@@ -173,7 +175,7 @@
 
 <p>Lo, and behold! Notice and alert are built-in flash tags, but success is nowhere to be found. How can I express the satisfaction of <code>SUCCESS!!</code> with a tag as mundane as notice:?</p>
 
-<p>Thanks to duck-typing (if it walks like a duck and quacks like a duck, it is probably a hash.. right?) we can add our spiffy <code>success:</code> tag to flash, and share the appropriate level of enthusiasm with our users:</p>
+<p>Thanks to <a href='http://en.wikipedia.org/wiki/Duck_typing'>duck-typing</a> (if it walks like a duck and quacks like a duck, it is probably a hash.. right?) we can add our spiffy <code>success:</code> tag to flash, and share the appropriate level of enthusiasm with our users:</p>
 
 <p><div class='highlight'><pre><code class='ruby'><span class='nb'>format</span><span class='o'>.</span><span class='n'>html</span> <span class='p'>{</span> <span class='n'>redirect_to</span> <span class='vi'>@user</span><span class='p'>,</span> <span class='ss'>flash</span><span class='p'>:</span> <span class='p'>{</span> <span class='ss'>success</span><span class='p'>:</span> <span class='s2'>&quot;Profile updated&quot;</span> <span class='p'>}}</span>
 </code></pre></div></p>

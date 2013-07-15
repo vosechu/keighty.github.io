@@ -4,7 +4,7 @@
  <title>Katie Leonard</title>
  <link href="http://katieleonard.ca/" rel="self"/>
  <link href="http://katieleonard.ca"/>
- <updated>2013-07-13T10:29:36-07:00</updated>
+ <updated>2013-07-15T12:02:04-07:00</updated>
  <id>http://katieleonard.ca</id>
  <author>
    <name>Katie Leonard</name>
@@ -17,21 +17,8 @@
    <link href="http://katieleonard.ca/rails/2013/07/13/a-flash-of-understanding"/>
    <updated>2013-07-13T00:00:00-07:00</updated>
    <id>http://katieleonard.ca/rails/2013/07/13/a-flash-of-understanding</id>
-   <content type="html">&lt;p&gt;The Rails4 user scaffold comes with some built in methods. The update method is a good example:&lt;/p&gt;
-&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;ruby&#39;&gt;&lt;span class=&#39;c1&#39;&gt;# PATCH/PUT /users/1&lt;/span&gt;
-&lt;span class=&#39;c1&#39;&gt;# PATCH/PUT /users/1.json&lt;/span&gt;
-&lt;span class=&#39;k&#39;&gt;def&lt;/span&gt; &lt;span class=&#39;nf&#39;&gt;update&lt;/span&gt;
-  &lt;span class=&#39;n&#39;&gt;respond_to&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;do&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;|&lt;/span&gt;&lt;span class=&#39;nb&#39;&gt;format&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;|&lt;/span&gt;
-    &lt;span class=&#39;k&#39;&gt;if&lt;/span&gt; &lt;span class=&#39;vi&#39;&gt;@user&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;update&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;user_params&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;)&lt;/span&gt;
-      &lt;span class=&#39;nb&#39;&gt;format&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;html&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;{&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;redirect_to&lt;/span&gt; &lt;span class=&#39;vi&#39;&gt;@user&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;notice&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;s1&#39;&gt;&amp;#39;Profile updated.&amp;#39;&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;}&lt;/span&gt;
-      &lt;span class=&#39;nb&#39;&gt;format&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;json&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;{&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;head&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;:no_content&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;}&lt;/span&gt;
-    &lt;span class=&#39;k&#39;&gt;else&lt;/span&gt;
-      &lt;span class=&#39;nb&#39;&gt;format&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;html&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;{&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;render&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;action&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;s1&#39;&gt;&amp;#39;edit&amp;#39;&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;}&lt;/span&gt;
-      &lt;span class=&#39;nb&#39;&gt;format&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;json&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;{&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;render&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;json&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;vi&#39;&gt;@user&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;errors&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;status&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;:unprocessable_entity&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;}&lt;/span&gt;
-    &lt;span class=&#39;k&#39;&gt;end&lt;/span&gt;
-  &lt;span class=&#39;k&#39;&gt;end&lt;/span&gt;
-&lt;span class=&#39;k&#39;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+   <content type="html">&lt;p&gt;My page wouldn&amp;#8217;t flash the user.&lt;/p&gt;
+
 &lt;p&gt;Trundling along the &lt;a href=&#39;http://ruby.railstutorial.org/chapters/updating-showing-and-deleting-users?version=4.0#top&#39;&gt;Hartl railstutorial&lt;/a&gt;, I needed to write some logic to allow a user to update their information.&lt;/p&gt;
 
 &lt;p&gt;As a &lt;a href=&#39;http://www.katieleonard.ca/tdd/testing/2013/06/14/TDD-is-the-way-to-be/&#39;&gt;loyal TDD-er&lt;/a&gt;, I wrote a test to check that users see a success message if they are able to update their infomation:&lt;/p&gt;
@@ -50,7 +37,22 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;As expected, the tests should fail until I am able to log in.&lt;/p&gt;
 
-&lt;p&gt;I modify the line 5 of the user controller to change the notice to a success message:&lt;/p&gt;
+&lt;p&gt;Since the Rails4 user scaffold comes with some nifty built in methods, I thought it would be easy to adapt them for my own ends:&lt;/p&gt;
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;ruby&#39;&gt;&lt;span class=&#39;c1&#39;&gt;# PATCH/PUT /users/1&lt;/span&gt;
+&lt;span class=&#39;c1&#39;&gt;# PATCH/PUT /users/1.json&lt;/span&gt;
+&lt;span class=&#39;k&#39;&gt;def&lt;/span&gt; &lt;span class=&#39;nf&#39;&gt;update&lt;/span&gt;
+  &lt;span class=&#39;n&#39;&gt;respond_to&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;do&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;|&lt;/span&gt;&lt;span class=&#39;nb&#39;&gt;format&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;|&lt;/span&gt;
+    &lt;span class=&#39;k&#39;&gt;if&lt;/span&gt; &lt;span class=&#39;vi&#39;&gt;@user&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;update&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;user_params&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;)&lt;/span&gt;
+      &lt;span class=&#39;nb&#39;&gt;format&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;html&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;{&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;redirect_to&lt;/span&gt; &lt;span class=&#39;vi&#39;&gt;@user&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;notice&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;s1&#39;&gt;&amp;#39;Profile updated.&amp;#39;&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;}&lt;/span&gt;
+      &lt;span class=&#39;nb&#39;&gt;format&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;json&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;{&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;head&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;:no_content&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;}&lt;/span&gt;
+    &lt;span class=&#39;k&#39;&gt;else&lt;/span&gt;
+      &lt;span class=&#39;nb&#39;&gt;format&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;html&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;{&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;render&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;action&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;s1&#39;&gt;&amp;#39;edit&amp;#39;&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;}&lt;/span&gt;
+      &lt;span class=&#39;nb&#39;&gt;format&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;json&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;{&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;render&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;json&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;vi&#39;&gt;@user&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;errors&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;status&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;:unprocessable_entity&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;}&lt;/span&gt;
+    &lt;span class=&#39;k&#39;&gt;end&lt;/span&gt;
+  &lt;span class=&#39;k&#39;&gt;end&lt;/span&gt;
+&lt;span class=&#39;k&#39;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;I modify the line 5 of the user controller to change the &amp;#8220;notice&amp;#8221; message to a &amp;#8220;success&amp;#8221; message:&lt;/p&gt;
 
 &lt;p&gt;&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;ruby&#39;&gt;&lt;span class=&#39;nb&#39;&gt;format&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;html&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;{&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;redirect_to&lt;/span&gt; &lt;span class=&#39;vi&#39;&gt;@user&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;success&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;s2&#39;&gt;&amp;quot;Profile updated&amp;quot;&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
@@ -61,7 +63,7 @@
 
 &lt;p&gt;Lo, and behold! Notice and alert are built-in flash tags, but success is nowhere to be found. How can I express the satisfaction of &lt;code&gt;SUCCESS!!&lt;/code&gt; with a tag as mundane as notice:?&lt;/p&gt;
 
-&lt;p&gt;Thanks to duck-typing (if it walks like a duck and quacks like a duck, it is probably a hash.. right?) we can add our spiffy &lt;code&gt;success:&lt;/code&gt; tag to flash, and share the appropriate level of enthusiasm with our users:&lt;/p&gt;
+&lt;p&gt;Thanks to &lt;a href=&#39;http://en.wikipedia.org/wiki/Duck_typing&#39;&gt;duck-typing&lt;/a&gt; (if it walks like a duck and quacks like a duck, it is probably a hash.. right?) we can add our spiffy &lt;code&gt;success:&lt;/code&gt; tag to flash, and share the appropriate level of enthusiasm with our users:&lt;/p&gt;
 
 &lt;p&gt;&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;ruby&#39;&gt;&lt;span class=&#39;nb&#39;&gt;format&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;html&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;{&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;redirect_to&lt;/span&gt; &lt;span class=&#39;vi&#39;&gt;@user&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;flash&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;{&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;success&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;s2&#39;&gt;&amp;quot;Profile updated&amp;quot;&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;}}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
