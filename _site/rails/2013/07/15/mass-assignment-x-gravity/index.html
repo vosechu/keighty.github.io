@@ -7,11 +7,11 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>A Flash of Understanding</title>
+	<title>Mass assignment X Gravity</title>
 	<meta name="author" content="Katie Leonard">
 	<link href='/assets/themes/the-program/css/style.css' rel="stylesheet" media="all">
 	<link href='/assets/themes/the-program/css/mystyles.css' rel="stylesheet" media="all">
-	<link href="http://feeds.feedburner.com/" rel="alternate" title="A Flash of Understanding" type="application/atom+xml">
+	<link href="http://feeds.feedburner.com/" rel="alternate" title="Mass assignment X Gravity" type="application/atom+xml">
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
 </head>
 <body>
@@ -122,73 +122,72 @@
 			<header>
 				<div class="unit-head">
 					<div class="unit-inner unit-head-inner">
-						<h1 class="h2 entry-title">A Flash of Understanding</h1>
+						<h1 class="h2 entry-title">Mass assignment X Gravity</h1>
 					</div><!-- unit-inner -->
 				</div><!-- unit-head -->
 			</header>
 
 			<div class="bd">
 				<div class="entry-content">
-					<p>My page wouldn&#8217;t flash the user.</p>
+					<h1 id='what_is_mass_assignment'>What is Mass Assignment?</h1>
 
-<p>Trundling along the <a href='http://ruby.railstutorial.org/chapters/updating-showing-and-deleting-users?version=4.0#top'>Hartl railstutorial</a>, I needed to write some logic to allow a user to update their information.</p>
+<p>Mass assignment is using a ruby-esque shortcut to interact with models:</p>
 
-<p>As a <a href='http://www.katieleonard.ca/tdd/testing/2013/06/14/TDD-is-the-way-to-be/'>loyal TDD-er</a>, I wrote a test to check that users see a success message if they are able to update their infomation:</p>
-<div class='highlight'><pre><code class='ruby'><span class='n'>describe</span> <span class='s2'>&quot;updating with valid information&quot;</span> <span class='k'>do</span>
-  <span class='n'>let</span><span class='p'>(</span><span class='ss'>:new_name</span><span class='p'>)</span> <span class='p'>{</span> <span class='s2'>&quot;New Name&quot;</span> <span class='p'>}</span>
-  <span class='n'>let</span><span class='p'>(</span><span class='ss'>:new_email</span><span class='p'>)</span> <span class='p'>{</span> <span class='s2'>&quot;new@example.com&quot;</span> <span class='p'>}</span>
-  <span class='n'>before</span> <span class='k'>do</span>
-    <span class='n'>fill_in</span> <span class='s2'>&quot;Name&quot;</span><span class='p'>,</span> <span class='ss'>with</span><span class='p'>:</span> <span class='n'>new_name</span>
-    <span class='n'>fill_in</span> <span class='s2'>&quot;Email&quot;</span><span class='p'>,</span> <span class='ss'>with</span><span class='p'>:</span> <span class='n'>new_email</span>
-    <span class='n'>fill_in</span> <span class='s2'>&quot;Password&quot;</span><span class='p'>,</span> <span class='ss'>with</span><span class='p'>:</span> <span class='n'>user</span><span class='o'>.</span><span class='n'>password</span>
-    <span class='n'>fill_in</span> <span class='s2'>&quot;Confirm Password&quot;</span><span class='p'>,</span> <span class='ss'>with</span><span class='p'>:</span> <span class='n'>user</span><span class='o'>.</span><span class='n'>password</span>
-    <span class='n'>click_button</span> <span class='s2'>&quot;Save changes&quot;</span>
-  <span class='k'>end</span>
-  <span class='n'>it</span> <span class='p'>{</span> <span class='n'>should</span> <span class='n'>have_selector</span><span class='p'>(</span><span class='s1'>&#39;div.alert.alert-success&#39;</span><span class='p'>)</span> <span class='p'>}</span>
-<span class='k'>end</span>
-</code></pre></div>
-<p>As expected, the tests should fail until I am able to log in.</p>
-
-<p>Since the Rails4 user scaffold comes with some nifty built in methods, I thought it would be easy to adapt them for my own ends:</p>
-<div class='highlight'><pre><code class='ruby'><span class='c1'># PATCH/PUT /users/1</span>
-<span class='c1'># PATCH/PUT /users/1.json</span>
-<span class='k'>def</span> <span class='nf'>update</span>
-  <span class='n'>respond_to</span> <span class='k'>do</span> <span class='o'>|</span><span class='nb'>format</span><span class='o'>|</span>
-    <span class='k'>if</span> <span class='vi'>@user</span><span class='o'>.</span><span class='n'>update</span><span class='p'>(</span><span class='n'>user_params</span><span class='p'>)</span>
-      <span class='nb'>format</span><span class='o'>.</span><span class='n'>html</span> <span class='p'>{</span> <span class='n'>redirect_to</span> <span class='vi'>@user</span><span class='p'>,</span> <span class='ss'>notice</span><span class='p'>:</span> <span class='s1'>&#39;Profile updated.&#39;</span> <span class='p'>}</span>
-      <span class='nb'>format</span><span class='o'>.</span><span class='n'>json</span> <span class='p'>{</span> <span class='n'>head</span> <span class='ss'>:no_content</span> <span class='p'>}</span>
-    <span class='k'>else</span>
-      <span class='nb'>format</span><span class='o'>.</span><span class='n'>html</span> <span class='p'>{</span> <span class='n'>render</span> <span class='ss'>action</span><span class='p'>:</span> <span class='s1'>&#39;edit&#39;</span> <span class='p'>}</span>
-      <span class='nb'>format</span><span class='o'>.</span><span class='n'>json</span> <span class='p'>{</span> <span class='n'>render</span> <span class='ss'>json</span><span class='p'>:</span> <span class='vi'>@user</span><span class='o'>.</span><span class='n'>errors</span><span class='p'>,</span> <span class='ss'>status</span><span class='p'>:</span> <span class='ss'>:unprocessable_entity</span> <span class='p'>}</span>
-    <span class='k'>end</span>
+<p>This is NOT mass assignment.</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>def</span> <span class='nf'>create</span>
+  <span class='n'>u</span> <span class='o'>=</span> <span class='no'>User</span><span class='o'>.</span><span class='n'>new</span>
+  <span class='n'>u</span><span class='o'>.</span><span class='n'>first_name</span> <span class='o'>=</span> <span class='n'>params</span><span class='o'>[</span><span class='ss'>:user</span><span class='o'>][</span><span class='ss'>:firstname</span><span class='o'>]</span>
+  <span class='n'>u</span><span class='o'>.</span><span class='n'>last_name</span> <span class='o'>=</span> <span class='n'>params</span><span class='o'>[</span><span class='ss'>:user</span><span class='o'>][</span><span class='ss'>:lastname</span><span class='o'>]</span>
+  <span class='k'>if</span> <span class='n'>u</span><span class='o'>.</span><span class='n'>save</span>
+    <span class='n'>redirect_to</span> <span class='ss'>:index</span><span class='p'>,</span> <span class='ss'>flash</span><span class='p'>:</span> <span class='p'>{</span> <span class='ss'>success</span><span class='p'>:</span> <span class='s2'>&quot;Created!&quot;</span> <span class='p'>}</span>
+  <span class='k'>else</span>
+    <span class='n'>render</span> <span class='ss'>:action</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;new&#39;</span>
   <span class='k'>end</span>
 <span class='k'>end</span>
 </code></pre></div>
-<p>I modify the line 5 of the user controller to change the &#8220;notice&#8221; message to a &#8220;success&#8221; message:</p>
+<p>Each param is extracted from the params hash and assigned explicitly. Any params that are not assigned are thrown on the floor.</p>
 
-<p><div class='highlight'><pre><code class='ruby'><span class='nb'>format</span><span class='o'>.</span><span class='n'>html</span> <span class='p'>{</span> <span class='n'>redirect_to</span> <span class='vi'>@user</span><span class='p'>,</span> <span class='ss'>success</span><span class='p'>:</span> <span class='s2'>&quot;Profile updated&quot;</span> <span class='p'>}</span>
-</code></pre></div></p>
+<p>This IS mass assignment.</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>def</span> <span class='nf'>create</span>
+  <span class='n'>u</span> <span class='o'>=</span> <span class='no'>User</span><span class='o'>.</span><span class='n'>new</span><span class='p'>(</span><span class='n'>params</span><span class='o'>[</span><span class='ss'>:user</span><span class='o'>]</span><span class='p'>)</span>
+  <span class='k'>if</span> <span class='n'>u</span><span class='o'>.</span><span class='n'>save</span>
+    <span class='n'>redirect_to</span> <span class='ss'>:index</span><span class='p'>,</span> <span class='ss'>flash</span><span class='p'>:</span> <span class='p'>{</span> <span class='ss'>success</span><span class='p'>:</span> <span class='s2'>&quot;Created!&quot;</span> <span class='p'>}</span>
+  <span class='k'>else</span>
+    <span class='n'>render</span> <span class='ss'>:action</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;new&#39;</span>
+  <span class='k'>end</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>The programmer assumes that the params include all the data necessary, and <em>only</em> the data necessary. All params in the hash are used to create the new user record.</p>
 
-<p>Seems reasonable, but my test for the flash message is still failing. Why won&#8217;t my page flash the user?!</p>
+<h3 id='why_is_mass_assignment_a_problem'>Why is mass assignment a problem?</h3>
 
-<p>Quick as a flash, I asked <a href='https://itunes.apple.com/us/app/dash-docs-snippets/id458034879?mt=12'>Dash</a> about FlashHash.</p>
+<p>The problem with mass assignment is that if you have a sensitive tag in your model, for example user_type (which could be set to admin), a malicious user can add <code>user[:user_type] = &#39;admin&#39;</code> to your params hash. Your controller will unwittingly include it in the save command, creating a new admin account for the malicious user.</p>
 
-<p>Lo, and behold! Notice and alert are built-in flash tags, but success is nowhere to be found. How can I express the satisfaction of <code>SUCCESS!!</code> with a tag as mundane as notice:?</p>
+<h3 id='is_there_any_way_to_prevent_this_diabolical_schema_scheme'>Is there any way to prevent this diabolical schema scheme?</h3>
 
-<p>Thanks to <a href='http://en.wikipedia.org/wiki/Duck_typing'>duck-typing</a> (if it walks like a duck and quacks like a duck, it is probably a hash.. right?) we can add our spiffy <code>success:</code> tag to flash, and share the appropriate level of enthusiasm with our users:</p>
+<p>There is! With Rails 4 comes <strong>strong params</strong>. Strong params live in the controller and tell it explicitly what params can be trusted.</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>def</span> <span class='nf'>create</span>
+  <span class='n'>u</span> <span class='o'>=</span> <span class='no'>User</span><span class='o'>.</span><span class='n'>new</span><span class='p'>(</span><span class='n'>user_params</span><span class='p'>)</span>
+  <span class='k'>if</span> <span class='n'>u</span><span class='o'>.</span><span class='n'>save</span>
+    <span class='n'>redirect_to</span> <span class='ss'>:index</span><span class='p'>,</span> <span class='ss'>flash</span><span class='p'>:</span> <span class='p'>{</span> <span class='ss'>success</span><span class='p'>:</span> <span class='s2'>&quot;Created!&quot;</span> <span class='p'>}</span>
+  <span class='k'>else</span>
+    <span class='n'>render</span> <span class='ss'>:action</span> <span class='o'>=&gt;</span> <span class='s1'>&#39;new&#39;</span>
+  <span class='k'>end</span>
+<span class='k'>end</span>
+<span class='o'>.</span><span class='n'>.</span><span class='o'>.</span>
+<span class='k'>def</span> <span class='nf'>user_params</span>
+  <span class='n'>params</span><span class='o'>.</span><span class='n'>require</span><span class='p'>(</span><span class='ss'>:user</span><span class='p'>)</span><span class='o'>.</span><span class='n'>permit</span><span class='p'>(</span><span class='ss'>:name</span><span class='p'>,</span> <span class='ss'>:email</span><span class='p'>,</span> <span class='ss'>:password</span><span class='p'>,</span> <span class='ss'>:password_confirmation</span><span class='p'>)</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>The only parameters our controller will send to the model are those specified on our white-list. If rails detects a user attempting to access a param that is not on the white-list, said user had better be prepared for <em>grave consequences</em>. Their session will be <strong>deleted</strong>, their attempt will be <strong>logged</strong>, and Rails will email their mother.</p>
 
-<p><div class='highlight'><pre><code class='ruby'><span class='nb'>format</span><span class='o'>.</span><span class='n'>html</span> <span class='p'>{</span> <span class='n'>redirect_to</span> <span class='vi'>@user</span><span class='p'>,</span> <span class='ss'>flash</span><span class='p'>:</span> <span class='p'>{</span> <span class='ss'>success</span><span class='p'>:</span> <span class='s2'>&quot;Profile updated&quot;</span> <span class='p'>}}</span>
-</code></pre></div></p>
-
-<p>All tests are green, and today I learned that flash is</p>
-
-<p>Awesome</p>
+<p>Awesome.</p>
 					<div class="meta">
 						<p class="date-publish">
 							Published: 
-							<date class="date-pub" title="2013-07-13T00:00:00-07:00" datetime="2013-07-13T00:00:00-07:00" pubdate>
+							<date class="date-pub" title="2013-07-15T00:00:00-07:00" datetime="2013-07-15T00:00:00-07:00" pubdate>
 							<span class="month"><abbr>July</abbr></span>
-							<span class="day">13</span>
+							<span class="day">15</span>
 							<span class="year">2013</span>
 							</date>
 						</p>
@@ -240,13 +239,9 @@
 					<nav class="pagination">
 						<ul>
 							
-							<li class="prev"><a class="internal" rel="prev"  href="/git/2013/07/11/best-practices-pull-requests" title="View Best Practices - Pull Requests">&laquo; Best Practices - Pull Requests</a></li>
+							<li class="prev"><a class="internal" rel="prev"  href="/rails/2013/07/13/a-flash-of-understanding" title="View A Flash of Understanding">&laquo; A Flash of Understanding</a></li>
 							
 							
-							<li class="pipe"> | </li>
-							
-							
-							<li class="next"><a class="internal" rel="next"  href="/rails/2013/07/15/mass-assignment-x-gravity" title="View Mass assignment X Gravity">Mass assignment X Gravity &raquo;</a></li>
 							
 						</ul>
 					</nav>
@@ -302,7 +297,7 @@
 		};
 	load('//platform.twitter.com/widgets.js', 'tweetjs');
 	// load('https://apis.google.com/js/plusone.js', 'gplus1js'); // Checkout http://j.mp/ApDgMr for usage html for this is <div class="g-plusone" data-size="medium"></div>
-	// load('//connect.facebook.net/en_US/all.js#xfbml=1', 'fbjssdk'); // Checkout http://j.mp/wZw2xR for using open graph protorol html for this is <div class="fb-like" data-href="/rails/2013/07/13/a-flash-of-understanding" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana"></div>
+	// load('//connect.facebook.net/en_US/all.js#xfbml=1', 'fbjssdk'); // Checkout http://j.mp/wZw2xR for using open graph protorol html for this is <div class="fb-like" data-href="/rails/2013/07/15/mass-assignment-x-gravity" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana"></div>
 	}(document, 'script'));
 </script>
 <script>

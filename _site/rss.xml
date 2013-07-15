@@ -5,10 +5,70 @@
         <description>Katie Leonard - Katie Leonard</description>
         <link>http://katieleonard.ca</link>
         <link>http://katieleonard.ca</link>
-        <lastBuildDate>2013-07-15T12:02:04-07:00</lastBuildDate>
-        <pubDate>2013-07-15T12:02:04-07:00</pubDate>
+        <lastBuildDate>2013-07-15T13:35:20-07:00</lastBuildDate>
+        <pubDate>2013-07-15T13:35:20-07:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>Mass assignment X Gravity</title>
+                <description>&lt;h1 id=&#39;what_is_mass_assignment&#39;&gt;What is Mass Assignment?&lt;/h1&gt;
+
+&lt;p&gt;Mass assignment is using a ruby-esque shortcut to interact with models:&lt;/p&gt;
+
+&lt;p&gt;This is NOT mass assignment.&lt;/p&gt;
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;ruby&#39;&gt;&lt;span class=&#39;k&#39;&gt;def&lt;/span&gt; &lt;span class=&#39;nf&#39;&gt;create&lt;/span&gt;
+  &lt;span class=&#39;n&#39;&gt;u&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;no&#39;&gt;User&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;new&lt;/span&gt;
+  &lt;span class=&#39;n&#39;&gt;u&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;first_name&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;params&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;[&lt;/span&gt;&lt;span class=&#39;ss&#39;&gt;:user&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;][&lt;/span&gt;&lt;span class=&#39;ss&#39;&gt;:firstname&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;]&lt;/span&gt;
+  &lt;span class=&#39;n&#39;&gt;u&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;last_name&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;params&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;[&lt;/span&gt;&lt;span class=&#39;ss&#39;&gt;:user&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;][&lt;/span&gt;&lt;span class=&#39;ss&#39;&gt;:lastname&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;]&lt;/span&gt;
+  &lt;span class=&#39;k&#39;&gt;if&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;u&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;save&lt;/span&gt;
+    &lt;span class=&#39;n&#39;&gt;redirect_to&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;:index&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;flash&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;{&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;success&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;s2&#39;&gt;&amp;quot;Created!&amp;quot;&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;}&lt;/span&gt;
+  &lt;span class=&#39;k&#39;&gt;else&lt;/span&gt;
+    &lt;span class=&#39;n&#39;&gt;render&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;:action&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#39;s1&#39;&gt;&amp;#39;new&amp;#39;&lt;/span&gt;
+  &lt;span class=&#39;k&#39;&gt;end&lt;/span&gt;
+&lt;span class=&#39;k&#39;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Each param is extracted from the params hash and assigned explicitly. Any params that are not assigned are thrown on the floor.&lt;/p&gt;
+
+&lt;p&gt;This IS mass assignment.&lt;/p&gt;
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;ruby&#39;&gt;&lt;span class=&#39;k&#39;&gt;def&lt;/span&gt; &lt;span class=&#39;nf&#39;&gt;create&lt;/span&gt;
+  &lt;span class=&#39;n&#39;&gt;u&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;no&#39;&gt;User&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;new&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;params&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;[&lt;/span&gt;&lt;span class=&#39;ss&#39;&gt;:user&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;]&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;)&lt;/span&gt;
+  &lt;span class=&#39;k&#39;&gt;if&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;u&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;save&lt;/span&gt;
+    &lt;span class=&#39;n&#39;&gt;redirect_to&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;:index&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;flash&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;{&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;success&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;s2&#39;&gt;&amp;quot;Created!&amp;quot;&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;}&lt;/span&gt;
+  &lt;span class=&#39;k&#39;&gt;else&lt;/span&gt;
+    &lt;span class=&#39;n&#39;&gt;render&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;:action&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#39;s1&#39;&gt;&amp;#39;new&amp;#39;&lt;/span&gt;
+  &lt;span class=&#39;k&#39;&gt;end&lt;/span&gt;
+&lt;span class=&#39;k&#39;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The programmer assumes that the params include all the data necessary, and &lt;em&gt;only&lt;/em&gt; the data necessary. All params in the hash are used to create the new user record.&lt;/p&gt;
+
+&lt;h3 id=&#39;why_is_mass_assignment_a_problem&#39;&gt;Why is mass assignment a problem?&lt;/h3&gt;
+
+&lt;p&gt;The problem with mass assignment is that if you have a sensitive tag in your model, for example user_type (which could be set to admin), a malicious user can add &lt;code&gt;user[:user_type] = &amp;#39;admin&amp;#39;&lt;/code&gt; to your params hash. Your controller will unwittingly include it in the save command, creating a new admin account for the malicious user.&lt;/p&gt;
+
+&lt;h3 id=&#39;is_there_any_way_to_prevent_this_diabolical_schema_scheme&#39;&gt;Is there any way to prevent this diabolical schema scheme?&lt;/h3&gt;
+
+&lt;p&gt;There is! With Rails 4 comes &lt;strong&gt;strong params&lt;/strong&gt;. Strong params live in the controller and tell it explicitly what params can be trusted.&lt;/p&gt;
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;ruby&#39;&gt;&lt;span class=&#39;k&#39;&gt;def&lt;/span&gt; &lt;span class=&#39;nf&#39;&gt;create&lt;/span&gt;
+  &lt;span class=&#39;n&#39;&gt;u&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;no&#39;&gt;User&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;new&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;user_params&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;)&lt;/span&gt;
+  &lt;span class=&#39;k&#39;&gt;if&lt;/span&gt; &lt;span class=&#39;n&#39;&gt;u&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;save&lt;/span&gt;
+    &lt;span class=&#39;n&#39;&gt;redirect_to&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;:index&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;flash&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;{&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;success&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;s2&#39;&gt;&amp;quot;Created!&amp;quot;&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;}&lt;/span&gt;
+  &lt;span class=&#39;k&#39;&gt;else&lt;/span&gt;
+    &lt;span class=&#39;n&#39;&gt;render&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;:action&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#39;s1&#39;&gt;&amp;#39;new&amp;#39;&lt;/span&gt;
+  &lt;span class=&#39;k&#39;&gt;end&lt;/span&gt;
+&lt;span class=&#39;k&#39;&gt;end&lt;/span&gt;
+&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;
+&lt;span class=&#39;k&#39;&gt;def&lt;/span&gt; &lt;span class=&#39;nf&#39;&gt;user_params&lt;/span&gt;
+  &lt;span class=&#39;n&#39;&gt;params&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;require&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;ss&#39;&gt;:user&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;)&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;permit&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;ss&#39;&gt;:name&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;:email&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;:password&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;:password_confirmation&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;)&lt;/span&gt;
+&lt;span class=&#39;k&#39;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The only parameters our controller will send to the model are those specified on our white-list. If rails detects a user attempting to access a param that is not on the white-list, said user had better be prepared for &lt;em&gt;grave consequences&lt;/em&gt;. Their session will be &lt;strong&gt;deleted&lt;/strong&gt;, their attempt will be &lt;strong&gt;logged&lt;/strong&gt;, and Rails will email their mother.&lt;/p&gt;
+
+&lt;p&gt;Awesome.&lt;/p&gt;</description>
+                <link>http://katieleonard.ca/rails/2013/07/15/mass-assignment-x-gravity</link>
+                <guid>http://katieleonard.ca/rails/2013/07/15/mass-assignment-x-gravity</guid>
+                <pubDate>2013-07-15T00:00:00-07:00</pubDate>
+        </item>
 
         <item>
                 <title>A Flash of Understanding</title>
