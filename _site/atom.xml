@@ -4,13 +4,93 @@
  <title>Katie Leonard</title>
  <link href="http://katieleonard.ca/" rel="self"/>
  <link href="http://katieleonard.ca"/>
- <updated>2013-07-15T13:35:20-07:00</updated>
+ <updated>2013-07-17T19:51:31-07:00</updated>
  <id>http://katieleonard.ca</id>
  <author>
    <name>Katie Leonard</name>
    <email>keighty.leonard@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Get your kicks on route localhost:4567</title>
+   <link href="http://katieleonard.ca/sinatra/2013/07/17/get-your-kicks-on-localhost4567"/>
+   <updated>2013-07-17T00:00:00-07:00</updated>
+   <id>http://katieleonard.ca/sinatra/2013/07/17/get-your-kicks-on-localhost4567</id>
+   <content type="html">&lt;h2 id=&#39;i_learned_something_about_sinatra_today&#39;&gt;I learned something about Sinatra today.&lt;/h2&gt;
+
+&lt;p&gt;A route has three ingredients: an HTTP method, a URL matching pattern, and a code block. Typically they look like this:&lt;/p&gt;
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;ruby&#39;&gt;&lt;span class=&#39;n&#39;&gt;get&lt;/span&gt; &lt;span class=&#39;s1&#39;&gt;&amp;#39;/&amp;#39;&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;do&lt;/span&gt;
+  &lt;span class=&#39;s2&#39;&gt;&amp;quot;hello world&amp;quot;&lt;/span&gt;
+&lt;span class=&#39;k&#39;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;But they can also look like this:&lt;/p&gt;
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;ruby&#39;&gt;&lt;span class=&#39;n&#39;&gt;post&lt;/span&gt; &lt;span class=&#39;s1&#39;&gt;&amp;#39;/game/:guess&amp;#39;&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;do&lt;/span&gt;
+  &lt;span class=&#39;n&#39;&gt;game&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;guess&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;params&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;[&lt;/span&gt;&lt;span class=&#39;ss&#39;&gt;:guess&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;]&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;)&lt;/span&gt;
+&lt;span class=&#39;k&#39;&gt;end&lt;/span&gt;
+&lt;span class=&#39;kp&#39;&gt;private&lt;/span&gt;
+  &lt;span class=&#39;k&#39;&gt;def&lt;/span&gt; &lt;span class=&#39;nf&#39;&gt;game&lt;/span&gt;
+    &lt;span class=&#39;vi&#39;&gt;@game&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;||=&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;Mastermind&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;:&lt;/span&gt;&lt;span class=&#39;ss&#39;&gt;:Game&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;new_with_code&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;params&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;[&lt;/span&gt;&lt;span class=&#39;ss&#39;&gt;:code&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;]&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;)&lt;/span&gt;
+  &lt;span class=&#39;k&#39;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The code block returns information. That information can be a web page, basic text (first example), or a the result of an evaluated block of code (second example). The block ships the return value back to the browser that invoked it. What the browser does with it is the browser&amp;#8217;s business.&lt;/p&gt;
+
+&lt;h2 id=&#39;i_learned_something_about_ajax_today&#39;&gt;I learned something about Ajax today.&lt;/h2&gt;
+
+&lt;p&gt;An ajax call is built up from a few minimum parameters: a url, the HTTP method, the dataType expected, and a callback function that handles the return. You can include data from the user in the form of a data hash:&lt;/p&gt;
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;javascript&#39;&gt;&lt;span class=&#39;lineno&#39;&gt; 1&lt;/span&gt; &lt;span class=&#39;kd&#39;&gt;var&lt;/span&gt; &lt;span class=&#39;nx&#39;&gt;the_url&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;s2&#39;&gt;&amp;quot;http://&amp;quot;&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;+&lt;/span&gt; &lt;span class=&#39;nb&#39;&gt;window&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;location&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;host&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;+&lt;/span&gt; &lt;span class=&#39;s2&#39;&gt;&amp;quot;/game/&amp;quot;&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;+&lt;/span&gt; &lt;span class=&#39;nx&#39;&gt;guess_string&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;;&lt;/span&gt;
+&lt;span class=&#39;lineno&#39;&gt; 2&lt;/span&gt;   &lt;span class=&#39;kd&#39;&gt;var&lt;/span&gt; &lt;span class=&#39;nx&#39;&gt;mark_string&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;nx&#39;&gt;$&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;ajax&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;({&lt;/span&gt;
+&lt;span class=&#39;lineno&#39;&gt; 3&lt;/span&gt;     &lt;span class=&#39;nx&#39;&gt;type&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;s2&#39;&gt;&amp;quot;POST&amp;quot;&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt;
+&lt;span class=&#39;lineno&#39;&gt; 4&lt;/span&gt;     &lt;span class=&#39;nx&#39;&gt;url&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;nx&#39;&gt;the_url&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt;
+&lt;span class=&#39;lineno&#39;&gt; 5&lt;/span&gt;     &lt;span class=&#39;nx&#39;&gt;accepts&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;s2&#39;&gt;&amp;quot;application/json&amp;quot;&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt;
+&lt;span class=&#39;lineno&#39;&gt; 6&lt;/span&gt;     &lt;span class=&#39;nx&#39;&gt;dataType&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;s2&#39;&gt;&amp;quot;json&amp;quot;&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt;
+&lt;span class=&#39;lineno&#39;&gt; 7&lt;/span&gt;     &lt;span class=&#39;nx&#39;&gt;data&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;{&lt;/span&gt; &lt;span class=&#39;s1&#39;&gt;&amp;#39;code&amp;#39;&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;nx&#39;&gt;secret_code&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;},&lt;/span&gt;
+&lt;span class=&#39;lineno&#39;&gt; 8&lt;/span&gt;     &lt;span class=&#39;nx&#39;&gt;complete&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;kd&#39;&gt;function&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;data&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;){&lt;/span&gt;
+&lt;span class=&#39;lineno&#39;&gt; 9&lt;/span&gt;       &lt;span class=&#39;nx&#39;&gt;output_mark&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;nx&#39;&gt;data&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;[&lt;/span&gt;&lt;span class=&#39;s1&#39;&gt;&amp;#39;responseText&amp;#39;&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;];&lt;/span&gt;
+&lt;span class=&#39;lineno&#39;&gt;10&lt;/span&gt;       &lt;span class=&#39;nx&#39;&gt;process_output&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;secret_code&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;nx&#39;&gt;guess_string&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;,&lt;/span&gt; &lt;span class=&#39;nx&#39;&gt;output_mark&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;);&lt;/span&gt;
+&lt;span class=&#39;lineno&#39;&gt;11&lt;/span&gt;     &lt;span class=&#39;p&#39;&gt;}&lt;/span&gt;
+&lt;span class=&#39;lineno&#39;&gt;12&lt;/span&gt;   &lt;span class=&#39;p&#39;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;In this code snippet I am using Ajax to send the secret code and the guess to the Sinatra route . I let the route do its magic, and wait for it to send me back a json containing the result.&lt;/p&gt;
+
+&lt;p&gt;The overall workflow looks like this:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The url will look like this: &amp;#8220;http://localhost:4567/game/12345&amp;#8221; (line 1). The submitted guess is 12345.&lt;/li&gt;
+
+&lt;li&gt;Ajax packages the url with the data hash containing the secret code (line 7).&lt;/li&gt;
+
+&lt;li&gt;Javascript submits the HTTP POST request to Sinatra which matches the route above.&lt;/li&gt;
+
+&lt;li&gt;The route creates a Mastermind::Game object with the provided secret code.&lt;/li&gt;
+
+&lt;li&gt;The route calls the guess method on the Game object with the submitted guess.&lt;/li&gt;
+
+&lt;li&gt;The route returns a json of the method output (in this case it is a string of +/- characters indicating exact number matches(+) or matched numbers in the wrong position(-)).&lt;/li&gt;
+
+&lt;li&gt;In the ajax callback function the data from the json object is parsed and passed on for further processing.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#39;i_learned_something_about_routes_today&#39;&gt;I learned something about routes today.&lt;/h2&gt;
+
+&lt;p&gt;I was experiencing a mental block about routes. I thought that building the &amp;#8220;/game/:guess&amp;#8221; route in Sinatra meant that I would be constantly navigating between &amp;#8220;/mastermind&amp;#8221; and &amp;#8220;/game/:guess&amp;#8221;, and that I would always be reloading the game with a new secret. How could my user interact with a page that was constantly reloading? But I was thinking about routes the wrong way. When my javascript called the route, it wasn&amp;#8217;t reloading my page, it was just retrieving data! I had conflated routes with navigation in my imagination, and forgot that a route is just a request for information, or a method call. Just because the information returned is usually rendered as an html page doesn&amp;#8217;t mean that it has to be html. Which leads me to the penultimate point&amp;#8230;&lt;/p&gt;
+
+&lt;h2 id=&#39;i_learned_something_about_curl_today&#39;&gt;I learned something about curl today.&lt;/h2&gt;
+
+&lt;p&gt;ANYTHING can make an HTTP request. Ok, maybe that is a slight overstatement.&lt;/p&gt;
+
+&lt;p&gt;Browsers interpret the information retrieved using HTTP requests, but they are far from the only category of software that can. Turns out, the command-line functions just as well:&lt;/p&gt;
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;bash&#39;&gt;&lt;span class=&#39;lineno&#39;&gt;1&lt;/span&gt; &lt;span class=&#39;nv&#39;&gt;$ &lt;/span&gt;curl -X POST -H &lt;span class=&#39;s2&#39;&gt;&amp;quot;Accept: application/json&amp;quot;&lt;/span&gt; -d &lt;span class=&#39;s2&#39;&gt;&amp;quot;code=12345&amp;quot;&lt;/span&gt; js-games.herokuapp.coe/12345
+&lt;span class=&#39;lineno&#39;&gt;2&lt;/span&gt; +++++&lt;span class=&#39;err&#39;&gt;$&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The command on line 1 will return the same string I am retrieving with $.ajax in javascript (output on line2). Sure it is a fairly plain result &amp;#8211; it doesn&amp;#8217;t even include a new line character, for pity&amp;#8217;s sake &amp;#8211; but it does the job of making an HTTP request to a route and receiving the result of the route&amp;#8217;s block processing.&lt;/p&gt;
+
+&lt;h2 id=&#39;i_learned_something_about_myself_today&#39;&gt;I learned something about myself today.&lt;/h2&gt;
+
+&lt;p&gt;I didn&amp;#8217;t even realize I was misunderstanding HTTP! It was one of those concepts I had already checked off my mental list of technologies to cover on my quest to become a web developer. This breakthrough has reminded me that reviewing the fundamentals in the context of learning new technologies will bring a deeper understanding of everything.&lt;/p&gt;
+
+&lt;p&gt;Awesome&lt;/p&gt;</content>
+ </entry>
  
  <entry>
    <title>Mass assignment X Gravity</title>

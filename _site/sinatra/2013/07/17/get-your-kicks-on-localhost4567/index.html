@@ -1,0 +1,331 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 ie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 ie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 ie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Get your kicks on route localhost:4567</title>
+	<meta name="author" content="Katie Leonard">
+	<link href='/assets/themes/the-program/css/style.css' rel="stylesheet" media="all">
+	<link href='/assets/themes/the-program/css/mystyles.css' rel="stylesheet" media="all">
+	<link href="http://feeds.feedburner.com/" rel="alternate" title="Get your kicks on route localhost:4567" type="application/atom+xml">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+</head>
+<body>
+
+<div id="page" class="hentry">
+	<header class="the-header">
+		<div class="unit-head">
+			<div class="unit-inner unit-head-inner">
+				<nav class="nav-global">
+					<ul>
+						<li class="logo"><a href="/">Katie Leonard</a></li>
+						<!-- 
+            
+            
+
+
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/blog/index.html">Blog</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/index.html">Welcome</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/projects/index.html">Projects - Android</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/projects/web.html">Projects - Web</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/resume/index.html">Resume</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+
+
+ -->
+            <li><a href="/">Welcome</a></li>
+		        <li><a href="/blog/index.html">Blog</a></li>
+		        <li><a href="/resume/index.html">Resume</a></li>
+        		<li><a href="/projects/index.html">Android Projects</a></li>
+        		<li><a href="/projects/web.html">Web Projects</a></li>
+					</ul>
+				</nav>
+			</div><!-- unit-inner -->
+<!--
+			<a href="/projects"><img src="/assets/themes/the-program/images/habitude.png" alt="See details for Habitude"/></a>
+			<a href="/projects"><img src="/assets/themes/the-program/images/trash.png" alt="See details for Trash Your Troubles"/></a>
+			<a href="/projects"><img src="/assets/themes/the-program/images/donteatthat.png" alt="See details for Don't Eat That!"/></a>
+
+ -->		</div><!-- unit-head -->
+	</header>
+	<div class="body" role="main">
+		<div class="unit-body">
+			<div class="unit-inner unit-body-inner">
+				<div class="entry-content">
+					
+<article class="unit-article layout-post">
+	<div class="unit-inner unit-article-inner">
+		<div class="content">
+			<header>
+				<div class="unit-head">
+					<div class="unit-inner unit-head-inner">
+						<h1 class="h2 entry-title">Get your kicks on route localhost:4567</h1>
+					</div><!-- unit-inner -->
+				</div><!-- unit-head -->
+			</header>
+
+			<div class="bd">
+				<div class="entry-content">
+					<h2 id='i_learned_something_about_sinatra_today'>I learned something about Sinatra today.</h2>
+
+<p>A route has three ingredients: an HTTP method, a URL matching pattern, and a code block. Typically they look like this:</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>get</span> <span class='s1'>&#39;/&#39;</span> <span class='k'>do</span>
+  <span class='s2'>&quot;hello world&quot;</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>But they can also look like this:</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>post</span> <span class='s1'>&#39;/game/:guess&#39;</span> <span class='k'>do</span>
+  <span class='n'>game</span><span class='o'>.</span><span class='n'>guess</span><span class='p'>(</span><span class='n'>params</span><span class='o'>[</span><span class='ss'>:guess</span><span class='o'>]</span><span class='p'>)</span>
+<span class='k'>end</span>
+<span class='kp'>private</span>
+  <span class='k'>def</span> <span class='nf'>game</span>
+    <span class='vi'>@game</span> <span class='o'>||=</span> <span class='ss'>Mastermind</span><span class='p'>:</span><span class='ss'>:Game</span><span class='o'>.</span><span class='n'>new_with_code</span><span class='p'>(</span><span class='n'>params</span><span class='o'>[</span><span class='ss'>:code</span><span class='o'>]</span><span class='p'>)</span>
+  <span class='k'>end</span>
+</code></pre></div>
+<p>The code block returns information. That information can be a web page, basic text (first example), or a the result of an evaluated block of code (second example). The block ships the return value back to the browser that invoked it. What the browser does with it is the browser&#8217;s business.</p>
+
+<h2 id='i_learned_something_about_ajax_today'>I learned something about Ajax today.</h2>
+
+<p>An ajax call is built up from a few minimum parameters: a url, the HTTP method, the dataType expected, and a callback function that handles the return. You can include data from the user in the form of a data hash:</p>
+<div class='highlight'><pre><code class='javascript'><span class='lineno'> 1</span> <span class='kd'>var</span> <span class='nx'>the_url</span> <span class='o'>=</span> <span class='s2'>&quot;http://&quot;</span> <span class='o'>+</span> <span class='nb'>window</span><span class='p'>.</span><span class='nx'>location</span><span class='p'>.</span><span class='nx'>host</span> <span class='o'>+</span> <span class='s2'>&quot;/game/&quot;</span> <span class='o'>+</span> <span class='nx'>guess_string</span><span class='p'>;</span>
+<span class='lineno'> 2</span>   <span class='kd'>var</span> <span class='nx'>mark_string</span> <span class='o'>=</span> <span class='nx'>$</span><span class='p'>.</span><span class='nx'>ajax</span><span class='p'>({</span>
+<span class='lineno'> 3</span>     <span class='nx'>type</span><span class='o'>:</span> <span class='s2'>&quot;POST&quot;</span><span class='p'>,</span>
+<span class='lineno'> 4</span>     <span class='nx'>url</span><span class='o'>:</span> <span class='nx'>the_url</span><span class='p'>,</span>
+<span class='lineno'> 5</span>     <span class='nx'>accepts</span><span class='o'>:</span> <span class='s2'>&quot;application/json&quot;</span><span class='p'>,</span>
+<span class='lineno'> 6</span>     <span class='nx'>dataType</span><span class='o'>:</span> <span class='s2'>&quot;json&quot;</span><span class='p'>,</span>
+<span class='lineno'> 7</span>     <span class='nx'>data</span><span class='o'>:</span> <span class='p'>{</span> <span class='s1'>&#39;code&#39;</span> <span class='o'>:</span> <span class='nx'>secret_code</span> <span class='p'>},</span>
+<span class='lineno'> 8</span>     <span class='nx'>complete</span><span class='o'>:</span> <span class='kd'>function</span><span class='p'>(</span><span class='nx'>data</span><span class='p'>){</span>
+<span class='lineno'> 9</span>       <span class='nx'>output_mark</span> <span class='o'>=</span> <span class='nx'>data</span><span class='p'>[</span><span class='s1'>&#39;responseText&#39;</span><span class='p'>];</span>
+<span class='lineno'>10</span>       <span class='nx'>process_output</span><span class='p'>(</span><span class='nx'>secret_code</span><span class='p'>,</span> <span class='nx'>guess_string</span><span class='p'>,</span> <span class='nx'>output_mark</span><span class='p'>);</span>
+<span class='lineno'>11</span>     <span class='p'>}</span>
+<span class='lineno'>12</span>   <span class='p'>});</span>
+</code></pre></div>
+<p>In this code snippet I am using Ajax to send the secret code and the guess to the Sinatra route . I let the route do its magic, and wait for it to send me back a json containing the result.</p>
+
+<p>The overall workflow looks like this:</p>
+
+<ol>
+<li>The url will look like this: &#8220;http://localhost:4567/game/12345&#8221; (line 1). The submitted guess is 12345.</li>
+
+<li>Ajax packages the url with the data hash containing the secret code (line 7).</li>
+
+<li>Javascript submits the HTTP POST request to Sinatra which matches the route above.</li>
+
+<li>The route creates a Mastermind::Game object with the provided secret code.</li>
+
+<li>The route calls the guess method on the Game object with the submitted guess.</li>
+
+<li>The route returns a json of the method output (in this case it is a string of +/- characters indicating exact number matches(+) or matched numbers in the wrong position(-)).</li>
+
+<li>In the ajax callback function the data from the json object is parsed and passed on for further processing.</li>
+</ol>
+
+<h2 id='i_learned_something_about_routes_today'>I learned something about routes today.</h2>
+
+<p>I was experiencing a mental block about routes. I thought that building the &#8220;/game/:guess&#8221; route in Sinatra meant that I would be constantly navigating between &#8220;/mastermind&#8221; and &#8220;/game/:guess&#8221;, and that I would always be reloading the game with a new secret. How could my user interact with a page that was constantly reloading? But I was thinking about routes the wrong way. When my javascript called the route, it wasn&#8217;t reloading my page, it was just retrieving data! I had conflated routes with navigation in my imagination, and forgot that a route is just a request for information, or a method call. Just because the information returned is usually rendered as an html page doesn&#8217;t mean that it has to be html. Which leads me to the penultimate point&#8230;</p>
+
+<h2 id='i_learned_something_about_curl_today'>I learned something about curl today.</h2>
+
+<p>ANYTHING can make an HTTP request. Ok, maybe that is a slight overstatement.</p>
+
+<p>Browsers interpret the information retrieved using HTTP requests, but they are far from the only category of software that can. Turns out, the command-line functions just as well:</p>
+<div class='highlight'><pre><code class='bash'><span class='lineno'>1</span> <span class='nv'>$ </span>curl -X POST -H <span class='s2'>&quot;Accept: application/json&quot;</span> -d <span class='s2'>&quot;code=12345&quot;</span> js-games.herokuapp.coe/12345
+<span class='lineno'>2</span> +++++<span class='err'>$</span>
+</code></pre></div>
+<p>The command on line 1 will return the same string I am retrieving with $.ajax in javascript (output on line2). Sure it is a fairly plain result &#8211; it doesn&#8217;t even include a new line character, for pity&#8217;s sake &#8211; but it does the job of making an HTTP request to a route and receiving the result of the route&#8217;s block processing.</p>
+
+<h2 id='i_learned_something_about_myself_today'>I learned something about myself today.</h2>
+
+<p>I didn&#8217;t even realize I was misunderstanding HTTP! It was one of those concepts I had already checked off my mental list of technologies to cover on my quest to become a web developer. This breakthrough has reminded me that reviewing the fundamentals in the context of learning new technologies will bring a deeper understanding of everything.</p>
+
+<p>Awesome</p>
+					<div class="meta">
+						<p class="date-publish">
+							Published: 
+							<date class="date-pub" title="2013-07-17T00:00:00-07:00" datetime="2013-07-17T00:00:00-07:00" pubdate>
+							<span class="month"><abbr>July</abbr></span>
+							<span class="day">17</span>
+							<span class="year">2013</span>
+							</date>
+						</p>
+						<ul class="list-category list-linear">
+							<li class="list-head">category: </li>
+							
+							
+
+
+  
+     
+    	<li><a href="/categories.html#sinatra-ref">
+    		sinatra <span>2</span>
+    	</a></li>
+    
+  
+
+
+						</ul>
+						<ul class="list-tag list-linear">
+							<li class="list-head">tags: </li>
+							
+							
+
+
+  
+    
+  
+
+
+
+						</ul>
+					</div><!-- meta -->
+				</div><!-- entry-content -->
+				<div class="misc-content">
+					<div class="social">
+						<ul class="list-linear">
+							<li><div class="twitter-tweet"><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="KeightyLeonard" data-lang="en">Tweet</a></div></li>
+							<li><div class="twitter-follow"><a href="https://twitter.com/KeightyLeonard" class="twitter-follow-button" data-show-count="false" data-lang="en"></a></div></li>
+						</ul>
+					</div>
+					<div class="comment">
+					
+					</div>
+				</div><!-- misc-content -->
+			</div><!-- bd -->
+			<footer class="unit-foot">
+				<div class="unit-inner unit-foot-inner">
+					<nav class="pagination">
+						<ul>
+							
+							<li class="prev"><a class="internal" rel="prev"  href="/rails/2013/07/15/mass-assignment-x-gravity" title="View Mass assignment X Gravity">&laquo; Mass assignment X Gravity</a></li>
+							
+							
+							
+						</ul>
+					</nav>
+					<p class="gotop">
+						<a href="#page">Back to Top</a>
+					</p>
+				</div>
+			</footer>
+
+		</div><!-- content -->
+	</div><!-- unit-inner -->
+</article>
+
+
+				</div>
+			</div><!-- unit-inner -->
+		</div><!-- unit-body -->
+	</div><!-- body -->
+	<footer class="the-footer">
+		<div class="unit-foot">
+			<div class="unit-inner unit-foot-inner">
+				<div class="misc vcard">
+					<h4>About Me</h4>
+					<p>I am transitioning from research into web development, and
+						 can't wait to get creative in the Portland webdev community. </p>
+  				<p>I love refactoring in code and in life - making things simple,
+  clean, and concise is a real passion. I am an avid bridge player,
+  love the sport of curling, and can occasionally be found performing
+  with a tap-dance troop.</p>
+					<ul>
+					<a href="mailto:keighty.leonard@gmail.com"><img src="/assets/themes/the-program/images/mail.png" alt="linkedin" width="32"></a>
+          <a href="http://www.github.com/keighty" target="_blank"><img src="/assets/themes/the-program/images/github.png" alt="github"></a>
+          <a href="http://www.twitter.com/KeightyLeonard" target="_blank"><img src="/assets/themes/the-program/images/twitter.png" alt="twitter" width="32"></a>
+          <a href="http://www.linkedin.com/in/katieleonard" target="_blank"><img src="/assets/themes/the-program/images/linkedin.png" alt="linkedin" width="32"></a>
+          <a href="http://katieleonard.ca/rss.xml" target="_blank"><img src="/assets/themes/the-program/images/rss.jpeg" alt="linkedin" width="32"></a>
+					</ul>
+
+				</div><!-- misc -->
+				<!-- <p class="licence">
+					Theme: <a href="http://layouts-the.me">the_minimum</a> based on <a href="http://jekyllbootstrap.com/">Jekyll-bootstrap</a>.<br>
+					Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a>.
+				</p> -->
+			</div><!-- unit-foot-inner -->
+		</div><!-- unit-foot -->
+	</footer>
+</div><!-- page -->
+<script>
+	(function(d, s) {
+		var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+		if (d.getElementById(id)) {return;}
+		js = d.createElement(s); js.src = url; js.id = id;
+		fjs.parentNode.insertBefore(js, fjs);
+		};
+	load('//platform.twitter.com/widgets.js', 'tweetjs');
+	// load('https://apis.google.com/js/plusone.js', 'gplus1js'); // Checkout http://j.mp/ApDgMr for usage html for this is <div class="g-plusone" data-size="medium"></div>
+	// load('//connect.facebook.net/en_US/all.js#xfbml=1', 'fbjssdk'); // Checkout http://j.mp/wZw2xR for using open graph protorol html for this is <div class="fb-like" data-href="/sinatra/2013/07/17/get-your-kicks-on-localhost4567" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana"></div>
+	}(document, 'script'));
+</script>
+<script>
+/*! A fix for the iOS orientationchange zoom bug.Script by @scottjehl, rebound by @wilto. MIT License.*/
+(function(j){var i=j.document;if(!i.querySelectorAll){return}var l=i.querySelectorAll("meta[name=viewport]")[0],a=l&&l.getAttribute("content"),h=a+", maximum-scale=1.0",d=a+", maximum-scale=10.0",g=true,c=j.orientation,k=0;if(!l){return}function f(){l.setAttribute("content",d);g=true}function b(){l.setAttribute("content",h);g=false}function e(m){c=Math.abs(j.orientation);k=Math.abs(m.gamma);if(k>8&&c===0){if(g){b()}}else{if(!g){f()}}}j.addEventListener("orientationchange",f,false);j.addEventListener("deviceorientation",e,false)})(this);
+</script>
+
+  
+</body>
+</html>
+
