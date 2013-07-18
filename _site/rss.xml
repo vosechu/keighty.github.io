@@ -5,8 +5,8 @@
         <description>Katie Leonard - Katie Leonard</description>
         <link>http://katieleonard.ca</link>
         <link>http://katieleonard.ca</link>
-        <lastBuildDate>2013-07-17T19:51:31-07:00</lastBuildDate>
-        <pubDate>2013-07-17T19:51:31-07:00</pubDate>
+        <lastBuildDate>2013-07-18T08:39:27-07:00</lastBuildDate>
+        <pubDate>2013-07-18T08:39:27-07:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -28,7 +28,7 @@
     &lt;span class=&#39;vi&#39;&gt;@game&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;||=&lt;/span&gt; &lt;span class=&#39;ss&#39;&gt;Mastermind&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;:&lt;/span&gt;&lt;span class=&#39;ss&#39;&gt;:Game&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;new_with_code&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;n&#39;&gt;params&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;[&lt;/span&gt;&lt;span class=&#39;ss&#39;&gt;:code&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;]&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;)&lt;/span&gt;
   &lt;span class=&#39;k&#39;&gt;end&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;The code block returns information. That information can be a web page, basic text (first example), or a the result of an evaluated block of code (second example). The block ships the return value back to the browser that invoked it. What the browser does with it is the browser&amp;#8217;s business.&lt;/p&gt;
+&lt;p&gt;The code block returns information. That information can be anything, from a plain string (first example), or an html web page, to a JSON representation of an object (second example). What the browser does with the information it receives is the browser&amp;#8217;s business.&lt;/p&gt;
 
 &lt;h2 id=&#39;i_learned_something_about_ajax_today&#39;&gt;I learned something about Ajax today.&lt;/h2&gt;
 
@@ -46,16 +46,16 @@
 &lt;span class=&#39;lineno&#39;&gt;11&lt;/span&gt;     &lt;span class=&#39;p&#39;&gt;}&lt;/span&gt;
 &lt;span class=&#39;lineno&#39;&gt;12&lt;/span&gt;   &lt;span class=&#39;p&#39;&gt;});&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;In this code snippet I am using Ajax to send the secret code and the guess to the Sinatra route . I let the route do its magic, and wait for it to send me back a json containing the result.&lt;/p&gt;
+&lt;p&gt;This code snippet is using Ajax to send the secret code and guess to the Sinatra route . The route does its magic, and returns a json containing the result.&lt;/p&gt;
 
-&lt;p&gt;The overall workflow looks like this:&lt;/p&gt;
+&lt;p&gt;The overall workflow:&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;The url will look like this: &amp;#8220;http://localhost:4567/game/12345&amp;#8221; (line 1). The submitted guess is 12345.&lt;/li&gt;
+&lt;li&gt;The url on my local machine looks like this: &amp;#8220;http://localhost:4567/game/12345&amp;#8221; (line 1). The submitted guess is 12345.&lt;/li&gt;
 
 &lt;li&gt;Ajax packages the url with the data hash containing the secret code (line 7).&lt;/li&gt;
 
-&lt;li&gt;Javascript submits the HTTP POST request to Sinatra which matches the route above.&lt;/li&gt;
+&lt;li&gt;Javascript submits the HTTP POST request to Sinatra which matches the route.&lt;/li&gt;
 
 &lt;li&gt;The route creates a Mastermind::Game object with the provided secret code.&lt;/li&gt;
 
@@ -68,17 +68,17 @@
 
 &lt;h2 id=&#39;i_learned_something_about_routes_today&#39;&gt;I learned something about routes today.&lt;/h2&gt;
 
-&lt;p&gt;I was experiencing a mental block about routes. I thought that building the &amp;#8220;/game/:guess&amp;#8221; route in Sinatra meant that I would be constantly navigating between &amp;#8220;/mastermind&amp;#8221; and &amp;#8220;/game/:guess&amp;#8221;, and that I would always be reloading the game with a new secret. How could my user interact with a page that was constantly reloading? But I was thinking about routes the wrong way. When my javascript called the route, it wasn&amp;#8217;t reloading my page, it was just retrieving data! I had conflated routes with navigation in my imagination, and forgot that a route is just a request for information, or a method call. Just because the information returned is usually rendered as an html page doesn&amp;#8217;t mean that it has to be html. Which leads me to the penultimate point&amp;#8230;&lt;/p&gt;
+&lt;p&gt;I had a mental block about routes. I thought that building the &amp;#8220;/game/:guess&amp;#8221; route in Sinatra meant that the user would be constantly navigating between &amp;#8220;/mastermind&amp;#8221; and &amp;#8220;/game/:guess&amp;#8221;, and that the game would always be reloading with a new secret. I was thinking about routes the wrong way &amp;#8211; when javascript calls the route, it doesn&amp;#8217;t reload the page, it just retrieves data! I had conflated routes with navigation in my imagination, and forgot that a route is just a method call containing a request for information. Just because the information returned is often rendered as an html page doesn&amp;#8217;t mean that it has to be html. Which leads me to the penultimate point&amp;#8230;&lt;/p&gt;
 
 &lt;h2 id=&#39;i_learned_something_about_curl_today&#39;&gt;I learned something about curl today.&lt;/h2&gt;
 
 &lt;p&gt;ANYTHING can make an HTTP request. Ok, maybe that is a slight overstatement.&lt;/p&gt;
 
 &lt;p&gt;Browsers interpret the information retrieved using HTTP requests, but they are far from the only category of software that can. Turns out, the command-line functions just as well:&lt;/p&gt;
-&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;bash&#39;&gt;&lt;span class=&#39;lineno&#39;&gt;1&lt;/span&gt; &lt;span class=&#39;nv&#39;&gt;$ &lt;/span&gt;curl -X POST -H &lt;span class=&#39;s2&#39;&gt;&amp;quot;Accept: application/json&amp;quot;&lt;/span&gt; -d &lt;span class=&#39;s2&#39;&gt;&amp;quot;code=12345&amp;quot;&lt;/span&gt; js-games.herokuapp.coe/12345
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;bash&#39;&gt;&lt;span class=&#39;lineno&#39;&gt;1&lt;/span&gt; &lt;span class=&#39;nv&#39;&gt;$ &lt;/span&gt;curl -X POST -H &lt;span class=&#39;s2&#39;&gt;&amp;quot;Accept: application/json&amp;quot;&lt;/span&gt; -d &lt;span class=&#39;s2&#39;&gt;&amp;quot;code=12345&amp;quot;&lt;/span&gt; js-games.herokuapp.com/12345
 &lt;span class=&#39;lineno&#39;&gt;2&lt;/span&gt; +++++&lt;span class=&#39;err&#39;&gt;$&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;The command on line 1 will return the same string I am retrieving with $.ajax in javascript (output on line2). Sure it is a fairly plain result &amp;#8211; it doesn&amp;#8217;t even include a new line character, for pity&amp;#8217;s sake &amp;#8211; but it does the job of making an HTTP request to a route and receiving the result of the route&amp;#8217;s block processing.&lt;/p&gt;
+&lt;p&gt;The command on line 1 will return the same string I am retrieving with $.ajax in javascript (output on line2). Sure it is a fairly plain result &amp;#8211; it doesn&amp;#8217;t even include a new line character, for pity&amp;#8217;s sake &amp;#8211; but it does the job of making an HTTP request to a route and using the result.&lt;/p&gt;
 
 &lt;h2 id=&#39;i_learned_something_about_myself_today&#39;&gt;I learned something about myself today.&lt;/h2&gt;
 

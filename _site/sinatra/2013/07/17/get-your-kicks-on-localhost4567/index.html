@@ -145,7 +145,7 @@
     <span class='vi'>@game</span> <span class='o'>||=</span> <span class='ss'>Mastermind</span><span class='p'>:</span><span class='ss'>:Game</span><span class='o'>.</span><span class='n'>new_with_code</span><span class='p'>(</span><span class='n'>params</span><span class='o'>[</span><span class='ss'>:code</span><span class='o'>]</span><span class='p'>)</span>
   <span class='k'>end</span>
 </code></pre></div>
-<p>The code block returns information. That information can be a web page, basic text (first example), or a the result of an evaluated block of code (second example). The block ships the return value back to the browser that invoked it. What the browser does with it is the browser&#8217;s business.</p>
+<p>The code block returns information. That information can be anything, from a plain string (first example), or an html web page, to a JSON representation of an object (second example). What the browser does with the information it receives is the browser&#8217;s business.</p>
 
 <h2 id='i_learned_something_about_ajax_today'>I learned something about Ajax today.</h2>
 
@@ -163,16 +163,16 @@
 <span class='lineno'>11</span>     <span class='p'>}</span>
 <span class='lineno'>12</span>   <span class='p'>});</span>
 </code></pre></div>
-<p>In this code snippet I am using Ajax to send the secret code and the guess to the Sinatra route . I let the route do its magic, and wait for it to send me back a json containing the result.</p>
+<p>This code snippet is using Ajax to send the secret code and guess to the Sinatra route . The route does its magic, and returns a json containing the result.</p>
 
-<p>The overall workflow looks like this:</p>
+<p>The overall workflow:</p>
 
 <ol>
-<li>The url will look like this: &#8220;http://localhost:4567/game/12345&#8221; (line 1). The submitted guess is 12345.</li>
+<li>The url on my local machine looks like this: &#8220;http://localhost:4567/game/12345&#8221; (line 1). The submitted guess is 12345.</li>
 
 <li>Ajax packages the url with the data hash containing the secret code (line 7).</li>
 
-<li>Javascript submits the HTTP POST request to Sinatra which matches the route above.</li>
+<li>Javascript submits the HTTP POST request to Sinatra which matches the route.</li>
 
 <li>The route creates a Mastermind::Game object with the provided secret code.</li>
 
@@ -185,17 +185,17 @@
 
 <h2 id='i_learned_something_about_routes_today'>I learned something about routes today.</h2>
 
-<p>I was experiencing a mental block about routes. I thought that building the &#8220;/game/:guess&#8221; route in Sinatra meant that I would be constantly navigating between &#8220;/mastermind&#8221; and &#8220;/game/:guess&#8221;, and that I would always be reloading the game with a new secret. How could my user interact with a page that was constantly reloading? But I was thinking about routes the wrong way. When my javascript called the route, it wasn&#8217;t reloading my page, it was just retrieving data! I had conflated routes with navigation in my imagination, and forgot that a route is just a request for information, or a method call. Just because the information returned is usually rendered as an html page doesn&#8217;t mean that it has to be html. Which leads me to the penultimate point&#8230;</p>
+<p>I had a mental block about routes. I thought that building the &#8220;/game/:guess&#8221; route in Sinatra meant that the user would be constantly navigating between &#8220;/mastermind&#8221; and &#8220;/game/:guess&#8221;, and that the game would always be reloading with a new secret. I was thinking about routes the wrong way &#8211; when javascript calls the route, it doesn&#8217;t reload the page, it just retrieves data! I had conflated routes with navigation in my imagination, and forgot that a route is just a method call containing a request for information. Just because the information returned is often rendered as an html page doesn&#8217;t mean that it has to be html. Which leads me to the penultimate point&#8230;</p>
 
 <h2 id='i_learned_something_about_curl_today'>I learned something about curl today.</h2>
 
 <p>ANYTHING can make an HTTP request. Ok, maybe that is a slight overstatement.</p>
 
 <p>Browsers interpret the information retrieved using HTTP requests, but they are far from the only category of software that can. Turns out, the command-line functions just as well:</p>
-<div class='highlight'><pre><code class='bash'><span class='lineno'>1</span> <span class='nv'>$ </span>curl -X POST -H <span class='s2'>&quot;Accept: application/json&quot;</span> -d <span class='s2'>&quot;code=12345&quot;</span> js-games.herokuapp.coe/12345
+<div class='highlight'><pre><code class='bash'><span class='lineno'>1</span> <span class='nv'>$ </span>curl -X POST -H <span class='s2'>&quot;Accept: application/json&quot;</span> -d <span class='s2'>&quot;code=12345&quot;</span> js-games.herokuapp.com/12345
 <span class='lineno'>2</span> +++++<span class='err'>$</span>
 </code></pre></div>
-<p>The command on line 1 will return the same string I am retrieving with $.ajax in javascript (output on line2). Sure it is a fairly plain result &#8211; it doesn&#8217;t even include a new line character, for pity&#8217;s sake &#8211; but it does the job of making an HTTP request to a route and receiving the result of the route&#8217;s block processing.</p>
+<p>The command on line 1 will return the same string I am retrieving with $.ajax in javascript (output on line2). Sure it is a fairly plain result &#8211; it doesn&#8217;t even include a new line character, for pity&#8217;s sake &#8211; but it does the job of making an HTTP request to a route and using the result.</p>
 
 <h2 id='i_learned_something_about_myself_today'>I learned something about myself today.</h2>
 
